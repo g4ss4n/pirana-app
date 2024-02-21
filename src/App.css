@@ -1,14 +1,7 @@
-.App {
-  text-align: center;
-  font-family: "Monetserrat";
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-.body-container{
+
+.text-container{
   margin-left: 250px;
 }
 

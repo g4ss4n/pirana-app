@@ -9,7 +9,7 @@ function App() {
   return (
     <div >
       <LeftDrawer />
-      <div className="body-container">
+      <div className="text-container">
         <Intro />
       </div>
     </div>
