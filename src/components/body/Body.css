@@ -1,5 +1,6 @@
 /* Body.css */
 .body-container,
-.body-container * {
-    font-family: "montserrat" !important;
+.body-container {
+    font-family: "montserrat";
+    margin-left: 40px;
 }
