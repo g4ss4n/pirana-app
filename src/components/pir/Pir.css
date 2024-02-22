@@ -1,0 +1,28 @@
+/* Pir.css */
+.pir-container {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .pir-container h2 {
+    margin-top: 20px;
+  }
+  
+  .pir-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .pir-container li {
+    margin-bottom: 10px;
+  }
+  
+  .pir-container li:before {
+    content: "•"; /* Bullet point */
+    color: #007bff; /* Blue */
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+  

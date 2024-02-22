@@ -7,7 +7,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  font-size:medium;
+  font-size: medium;
 }
 
 .left-drawer ul {
@@ -19,6 +19,7 @@
   padding: 3px;
   border-radius: 5px;
   margin-left: 10px;
+  margin-right: 10px;
 }
 
 .left-drawer a {
@@ -27,29 +28,21 @@
   color: #fff;
   display: block;
   padding: 5px;
-  transition: background-color 0.3s ease; /* Add transition effect */
   padding-left: 20px;
+  transition: background-color 0.3s ease; /* Add transition effect */
 }
 
-.left-drawer a:hover {
-  background-color: #555;
+.left-drawer a:hover{
+    background-color: #555;
+    border-left: 3px solid #fff; /* Add border decoration */
+  }
 
-}
-
-.left-drawer a:focus {
+.left-drawer a:focus{
   background-color: #007bff;
-  color: #fff;
   border-left: 3px solid #fff; /* Add border decoration */
-
 }
 
-.left-drawer a:focus::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: -3px; /* Adjust position to align with the border */
-  width: 3px;
-  height: 100%;
-  background-color: #fff;
+.left-drawer a.active {
+  background-color: #007bff;
+  border-left: 3px solid #fff; /* Add border decoration */
 }
