@@ -4,6 +4,7 @@ import Title from '../title/Title';
 import Body from '../body/Body';
 import './Intro.css'; 
 
+
 const Intro = () => {
   return (
     <div className="intro-container">
