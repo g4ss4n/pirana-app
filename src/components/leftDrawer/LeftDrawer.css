@@ -8,6 +8,7 @@
   top: 0;
   left: 0;
   font-size: medium;
+  overflow-y: auto;
 }
 
 .left-drawer ul {
