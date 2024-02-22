@@ -1,6 +1,4 @@
 
-
-
 .text-container{
   margin-left: 250px;
 }
@@ -24,6 +22,15 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.page {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ccc; /* Gray color for the bottom line */
+
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 @keyframes App-logo-spin {

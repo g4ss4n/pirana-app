@@ -1,7 +1,5 @@
 .intro-container {
     padding: 20px;
-    background-color: #fff; /* Background color for the content area */
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
     margin: 5px; /* Add some margin for spacing */
   }
