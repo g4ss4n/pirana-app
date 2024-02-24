@@ -1,0 +1,41 @@
+/* Intro.css */
+
+  
+  .intro-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .intro-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.intro-image{
+  width:30%;
+  height:auto;
+  margin: auto;
+  display: block;
+}
+  
+  .intro-project-title,
+  .intro-pirana-info-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .intro-project-description,
+  .intro-project-impact,
+  .intro-pirana-info-description,
+  .intro-pirana-info-authors {
+    margin-bottom: 10px;
+  }
+  
+  .intro-project-end {
+    font-weight: bold;
+  }
+  
+  .intro-pirana-info-authors {
+    font-style: italic;
+  }
+  

@@ -1,0 +1,31 @@
+.tab-image {
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid #33333397;
+    max-width: 50%; /* Ensure the image doesn't exceed its container */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .conclusion {
+    margin-bottom: 90px;
+  }
+
+  ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+  }
+  
+  li {
+    margin-bottom: 5px; /* Adjust spacing between list items */
+  }
+  
+  /* Style for strong tags within list items */
+  li strong {
+    font-weight: bold;
+    color: #007bff; /* Blue color for strong text */
+  }
+  
+  /* Style for italic tags within list items */
+  li em {
+    font-style: italic;
+  }

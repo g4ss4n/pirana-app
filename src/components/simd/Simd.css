@@ -1,0 +1,8 @@
+.simd-image {
+    margin: auto;
+    margin-top: 80px;
+    width: 40%; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure the image is centered */
+    border-radius: 8px; /* Add rounded corners */
+  }

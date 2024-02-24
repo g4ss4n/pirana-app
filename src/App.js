@@ -5,6 +5,8 @@ import Intro from './components/intro/Intro';
 import Pir from './components/pir/Pir';
 import HomomorphicEncryption from './components/homomorphicEncryption/HomomorphicEncryption';
 import HomomorphicOperations from './components/homomorphicOperations/HomomorphicOperations';
+import Cwpir from './components/cwpir/Cwpir';
+import Simd from './components/simd/Simd';
 import './App.css';
 import { MdArrowBackIosNew,MdArrowForwardIos } from "react-icons/md";
 
@@ -17,7 +19,6 @@ function App() {
     "homomorphic-encryption",
     "homomorphic-operations",
     "constant-weight-code",
-    "cwpir",
     "simd",
     "cuckoo-hashing",
     "multi-server-pir",
@@ -55,6 +56,10 @@ function App() {
         return <HomomorphicEncryption />;
       case 'homomorphic-operations':
         return <HomomorphicOperations />;
+      case 'constant-weight-code':
+        return <Cwpir />;
+      case 'simd':
+        return <Simd />;
       // Add cases for other components as needed
       default:
         return null;
