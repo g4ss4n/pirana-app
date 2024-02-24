@@ -3,7 +3,6 @@ import React from 'react';
 import Title from '../title/Title';
 import Body from '../body/Body';
 import './HomomorphicEncryption.css'; 
-
   
 
 
@@ -13,7 +12,7 @@ const HomomorphicEncryption = () => {
       <Title>Homomorphic Encryption</Title>
       <Body>
         <p>
-          Homomorphic encryption is a form of encryption that allows the users to perform binary operation on encrypted (מוצפן) data without decrypting it.
+          Homomorphic encryption is a form of encryption that allows the users to perform binary operation on encrypted data without decrypting it.
         </p>
         <p>
           You have access to basic operation + and *, and then you build more complex functions from there. Multiplications are more expensive than additions, when using homomorphic encryption.
