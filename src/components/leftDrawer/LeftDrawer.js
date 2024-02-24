@@ -13,7 +13,6 @@ const LeftDrawer = ({ onItemClick, selectedItemIndex }) => {
     "pir",
     "homomorphic-encryption",
     "homomorphic-operations",
-    "constant-weight-code",
     "cwpir",
     "simd",
     "cuckoo-hashing",

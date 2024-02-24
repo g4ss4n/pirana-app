@@ -17,8 +17,8 @@ const Pir = () => {
           <strong>Requirements</strong>
         </p>
         <ul>
-          <li><strong>Correctness:</strong> PIR systems must accurately retrieve the requested information without errors. Users should receive the correct data, and the server should not be able to manipulate or tamper with the information being retrieved.</li>
-          <li><strong>Privacy:</strong> PIR must ensure that when a user queries a database, the server learns nothing about the specific information being requested. The user's query details should remain confidential.</li>
+          <li><strong>Correctness</strong> - PIR systems must accurately retrieve the requested information without errors. Users should receive the correct data, and the server should not be able to manipulate or tamper with the information being retrieved.</li>
+          <li><strong>Privacy</strong> - PIR must ensure that when a user queries a database, the server learns nothing about the specific information being requested. The user's query details should remain confidential.</li>
         </ul>
         <h2>Naive solution</h2>
         <p>

@@ -23,11 +23,11 @@ const HomomorphicEncryption = () => {
           <li>Ensures the privacy of the data</li>
         </ul>
         <p><strong>Types:</strong></p>
-        <ul>
-          <li>PHE - Partially Homomorphic Encryption - Only one operation but infinite number of times - Only addition or multiplication.</li>
-          <li>SHE - Somewhat Homomorphic Encryption - Both addition and multiplication for a limited number of times (limitation).</li>
-          <li>FHE - Fully Homomorphic Encryption - Both addition and multiplication on the ciphertext infinite number of times.</li>
-        </ul>
+        <ol>
+          <li><strong>PHE - Partially Homomorphic Encryption</strong> - Only one operation but infinite number of times - Only addition or multiplication.</li>
+          <li><strong>SHE - Somewhat Homomorphic Encryption</strong> - Both addition and multiplication for a limited number of times (limitation).</li>
+          <li><strong>FHE - Fully Homomorphic Encryption</strong> - Both addition and multiplication on the ciphertext infinite number of times.</li>
+        </ol>
         <p><strong>Disadvantage:</strong> Speed and Storage requirements.</p>
         <p><strong>Major issue with Homomorphic encryption:</strong> poor performance and high cost.</p>
       </Body>
