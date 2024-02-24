@@ -1,7 +1,52 @@
-
 .text-container{
   margin-left: 250px;
+  padding: 20px;
 }
+
+.navigation-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Align buttons to the left */
+  padding: 15px 30px; /* Adjust padding as needed */
+  background-color: #555; /* Set background color */
+  box-shadow: #333 0px 0px 10px 0px;
+
+}
+
+.next{
+  margin-right: 70px;
+  background-color: #007bff;
+}
+
+.back{
+  background-color: gray;
+}
+
+.navigation-buttons button {
+  padding: 10px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back:hover {
+  background-color: #ffffffa8;
+}
+
+.next:hover {
+  background-color: #0167d4;
+}
+
+.navigation-buttons button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

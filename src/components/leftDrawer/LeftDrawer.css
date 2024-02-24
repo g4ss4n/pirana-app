@@ -5,11 +5,11 @@
   background-color: #333;
   color: #fff;
   position: fixed;
-  top: 0;
   left: 0;
   font-size: medium;
   overflow-y: auto;
 }
+
 
 .left-drawer ul {
   list-style-type: none;
@@ -17,33 +17,38 @@
 }
 
 .left-drawer li {
-  padding: 3px;
+  padding: 1px;
   border-radius: 5px;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.left-drawer a {
-  text-decoration: none;
+.left-drawer button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
   border-radius: 5px;
   color: #fff;
   display: block;
-  padding: 5px;
-  padding-left: 20px;
-  transition: background-color 0.3s ease; /* Add transition effect */
+  width: 100%;
+  text-align: left;
+  transition: all 0.1s ease; /* Add transition effect */
+  font-size: medium;
+  font-family: "montserrat";
+  text-transform: capitalize; /* Make first letter of each word uppercase */
 }
 
-.left-drawer a:hover{
-    background-color: #555;
-    border-left: 3px solid #fff; /* Add border decoration */
-  }
-
-.left-drawer a:focus{
-  background-color: #007bff;
-  border-left: 3px solid #fff; /* Add border decoration */
+.left-drawer button:focus {
+  outline: none;
 }
 
-.left-drawer a.active {
+.left-drawer button:hover {
+  background-color: #6e6e6e;
+  border-left: 3px solid white; /* Add left border on hover */
+}
+
+.left-drawer button.active {
   background-color: #007bff;
-  border-left: 3px solid #fff; /* Add border decoration */
+  border-left: 3px solid #fff; /* Add left border when active */
 }
