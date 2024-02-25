@@ -6,9 +6,6 @@
     height: auto; /* Maintain aspect ratio */
   }
 
-  .conclusion {
-    margin-bottom: 90px;
-  }
 
   ul {
     list-style-type: none; /* Remove default bullet points */
