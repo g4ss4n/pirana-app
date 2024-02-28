@@ -15,8 +15,7 @@
   }
   
   .pir-container li:before {
-    content: "•"; /* Bullet point */
-    color: #007bff; /* Blue */
+
     display: inline-block;
     width: 1em;
     margin-left: -1em;

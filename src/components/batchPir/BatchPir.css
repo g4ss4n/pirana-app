@@ -1,0 +1,15 @@
+.batch-pir-title{
+    margin-top: 30px;
+    padding-bottom: 10px;
+}
+
+.batch-img{
+    width: 40%;
+    height: auto;
+    margin: auto;
+    margin-top: 70px;
+    display: block;
+    border-radius: 8px;
+    border: gray 1px solid;
+    padding: 20px;
+}
