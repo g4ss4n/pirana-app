@@ -9,6 +9,12 @@ import Cwpir from './components/cwpir/Cwpir';
 import Simd from './components/simd/Simd';
 import './App.css';
 import { MdArrowBackIosNew,MdArrowForwardIos } from "react-icons/md";
+import CuckooHashing from './components/cuckooHashing/CuckooHashing';
+import MultiServerPir from './components/multiServerPir/MultiServerPir';
+import MultiqueryPir from './components/multiqueryPir/MultiqueryPir';
+import BatchPir from './components/batchPir/BatchPir';
+import LabeledPsi from './components/labeledPsi/LabeledPsi';
+
 
 
 function App() {
@@ -60,6 +66,16 @@ function App() {
         return <Cwpir />;
       case 'simd':
         return <Simd />;
+      case 'cuckoo-hashing':
+        return <CuckooHashing />;
+      case 'multi-server-pir':
+        return <MultiServerPir />;
+      case 'multiquery-pir':
+        return <MultiqueryPir />;
+      case 'batch-pir':
+        return <BatchPir />;
+      case 'labeled-psi':
+        return <LabeledPsi />;
       // Add cases for other components as needed
       default:
         return null;

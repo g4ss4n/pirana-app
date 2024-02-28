@@ -19,7 +19,7 @@
   /* Style for strong tags within list items */
   li strong {
     font-weight: bold;
-    color: #007bff; /* Blue color for strong text */
+    margin-left: 10px;
   }
   
   /* Style for italic tags within list items */
