@@ -14,6 +14,7 @@ import MultiServerPir from './components/multiServerPir/MultiServerPir';
 import MultiqueryPir from './components/multiqueryPir/MultiqueryPir';
 import BatchPir from './components/batchPir/BatchPir';
 import LabeledPsi from './components/labeledPsi/LabeledPsi';
+import Pirana from './components/pirana/Pirana';
 
 
 
@@ -31,6 +32,7 @@ function App() {
     "multiquery-pir",
     "batch-pir",
     "labeled-psi",
+    "pirana",
     "single-query-small-payloads",
     "single-query-large-payloads",
     "single-query-large-payloads-small-n",
@@ -76,6 +78,8 @@ function App() {
         return <BatchPir />;
       case 'labeled-psi':
         return <LabeledPsi />;
+      case 'pirana':
+        return <Pirana />;
       // Add cases for other components as needed
       default:
         return null;

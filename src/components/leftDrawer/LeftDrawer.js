@@ -20,6 +20,7 @@ const LeftDrawer = ({ onItemClick, selectedItemIndex }) => {
     "multiquery-pir",
     "batch-pir",
     "labeled-psi",
+    "pirana",
     "single-query-small-payloads",
     "single-query-large-payloads",
     "single-query-large-payloads-small-n",

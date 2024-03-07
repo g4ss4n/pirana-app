@@ -1,0 +1,56 @@
+.code-explanation-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .code-window {
+    flex: 1;
+    border: 1px solid #ccc;
+    height: 300px;
+    overflow-y: auto;
+  }
+  
+  .code-line {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .code-line:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .code-line.selected {
+    background-color: #e0e0e0;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+  }
+  
+  .nav-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px;
+  }
+  
+  .nav-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .explanation-window {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  .explanation-window h3 {
+    margin-top: 0;
+  }
+  
