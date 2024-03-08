@@ -81,7 +81,7 @@ function App() {
       case 'pirana':
         return <Pirana />;
       case 'single-query-small-payloads':
-        return <SingleQuerySP />;
+        return <SingleQuerySP />; 
       // Add cases for other components as needed
       default:
         return null;
