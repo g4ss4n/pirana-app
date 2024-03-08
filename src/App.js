@@ -15,8 +15,8 @@ import MultiqueryPir from './components/multiqueryPir/MultiqueryPir';
 import BatchPir from './components/batchPir/BatchPir';
 import LabeledPsi from './components/labeledPsi/LabeledPsi';
 import Pirana from './components/pirana/Pirana';
-
 import SingleQuerySP from './components/singleQuerySP/SingleQuerySP';
+
 
 
 function App() {
@@ -81,7 +81,6 @@ function App() {
         return <LabeledPsi />;
       case 'pirana':
         return <Pirana />;
-
       case 'single-query-small-payloads':
         return <SingleQuerySP />; 
       // Add cases for other components as needed
