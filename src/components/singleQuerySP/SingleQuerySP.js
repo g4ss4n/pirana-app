@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import CodeExplanation from '../codeExplanation/CodeExplanation';
-import './SingleQuerySP.css';
+
 const SingleQuerySP = () => {
     const codeLines = [
         {
