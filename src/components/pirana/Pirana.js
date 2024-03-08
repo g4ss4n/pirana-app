@@ -1,29 +1,30 @@
 import React from 'react';
-import CodeExplanation from '../codeExplanation/CodeExplanation';
-
+import './pirana.css'; // Import CSS file for styling
+import Title from '../title/Title';
+import Body from '../body/Body';
 
 const Pirana = () => {
-  const codeLines = [
-    { code: 'const x = 5;', explanation: 'Declare a variable x and assign it the value 5.' },
-    { code: 'const y = 10;', explanation: 'Declare a variable y and assign it the value 10.' },
-    { code: 'const sum = x + y;', explanation: 'Add variables x and y and store the result in sum.' },
-    { code: 'console.log(sum);', explanation: 'Print the value of sum to the console.' },
-  ]
-
-    const codeLines2 = [
-        { code: 'const x = 5;', explanation: 'Declare a variable x and assign it the value 5.' },
-        { code: 'const y = 10;', explanation: 'Declare a variable y and assign it the value 10.' },
-     
-    ];
-
-
-
   return (
-    <div>
-      <h2>Code Explanation Example</h2>
-          <CodeExplanation codeLines={codeLines} />
-          <h2>Code Explanation Example</h2>
-          <CodeExplanation codeLines={codeLines2} />
+    <div className="pirana-container">
+      <Title className="protocol-title">PIRANA Protocol:</Title>
+      <Body className="protocol-body">
+        <ul>
+          <li>PIRANA is based on recent advances in constant-weight codes. It achieves remarkable speed improvements over existing PIR protocols:</li>
+            <ol>
+              <li>Up to 188.6× faster than the original constant-weight PIR.</li>
+              <li>Naturally supports multi-query operations.</li>
+              <li>Allows clients to retrieve batches of elements with minimal extra cost compared to single-element retrieval.</li>
+              <li>Results in up to a 14.4× speedup over state-of-the-art multi-query PIR protocols.</li>
+            </ol>
+          
+        </ul>
+        <h2>Labeled Private Set Intersection (LPSI):</h2>
+        <ol>
+          <li>PIRANA can be extended to support LPSI scenarios where databases frequently update.</li>
+          <li>Compared to existing LPSI protocols, PIRANA is more suitable for such dynamic scenarios.</li>
+        </ol>
+        <p>In summary, PIRANA combines constant-weight codes with multi-query support, making it a promising advancement in the field of private information retrieval.</p>
+      </Body>
     </div>
   );
 };

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './CodeExplanation.css';
+import { IoChevronBackOutline } from "react-icons/io5";
+import { IoChevronForwardOutline } from "react-icons/io5";
+
 
 const CodeExplanation = ({ codeLines }) => {
   const [selectedLineIndex, setSelectedLineIndex] = useState(0);
@@ -16,18 +19,25 @@ const CodeExplanation = ({ codeLines }) => {
     }
   };
 
+  const handleLineClick = (index) => {
+    setSelectedLineIndex(index);
+  };
+
   return (
     <div className="code-explanation-container">
       <div className="code-window">
-        {codeLines.map((line, index) => (
-          <div key={index} className={`code-line ${index === selectedLineIndex ? 'selected' : ''}`}>
-            {line.code}
-          </div>
-        ))}
+        <pre className="language-jsx">
+          {codeLines.map((line, index) => (
+            <div key={index} className={`code-line ${index === selectedLineIndex ? 'selected' : ''}`} onClick={() => handleLineClick(index)}>
+              <span className="line-number">{index + 1}. </span>
+              <code>{line.code}</code>
+            </div>
+          ))}
+        </pre>
       </div>
       <div className="button-container">
-        <button className="nav-button" onClick={handlePrevious} disabled={selectedLineIndex === 0}>Previous</button>
-        <button className="nav-button" onClick={handleNext} disabled={selectedLineIndex === codeLines.length - 1}>Next</button>
+        <button className="nav-button" onClick={handlePrevious} disabled={selectedLineIndex === 0}> <IoChevronBackOutline className="nav-icon" /> Previous</button>
+        <button className="nav-button" onClick={handleNext} disabled={selectedLineIndex === codeLines.length - 1}>Next <IoChevronForwardOutline className="nav-icon" /></button>
       </div>
       <div className="explanation-window">
         <h3>Explanation</h3>

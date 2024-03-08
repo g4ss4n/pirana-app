@@ -1,56 +1,81 @@
+/* CodeExplanation.css */
+
 .code-explanation-container {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.code-window {
+  flex: 1;
+  background-color: #282c34; /* Dark background */
+  color: #cccccc; /* Text color */
+  height: 350px;
+  overflow-y: auto;
+  border-radius: 5px;
+  margin-right: 20px;
+  padding-left: 20px;
+}
+
+.code-line {
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 5px;
   
-  .code-window {
-    flex: 1;
-    border: 1px solid #ccc;
-    height: 300px;
-    overflow-y: auto;
-  }
-  
-  .code-line {
-    padding: 8px;
-    cursor: pointer;
-  }
-  
-  .code-line:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .code-line.selected {
-    background-color: #e0e0e0;
-  }
-  
-  .button-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 20px;
-  }
-  
-  .nav-button {
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 20px;
-  }
-  
-  .nav-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  .explanation-window {
-    flex: 1;
-    border: 1px solid #ccc;
-    padding: 20px;
-  }
-  
-  .explanation-window h3 {
-    margin-top: 0;
-  }
-  
+}
+
+.code-line:hover {
+  background-color: #007bff0a;
+}
+
+.selected {
+  background-color: #007bff79;
+  color: #fff;
+  font-weight: bold;
+
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.nav-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.nav-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.explanation-window {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  height: 300px;
+}
+
+.explanation-window h3 {
+  margin-top: 0;
+}
+
+.line-number {
+  display: inline-block;
+  color: #ff69b4; /* Pink color */
+  text-align: right;
+  margin-right: 10px; /* Adjust margin as needed */
+}
+
+.nav-icon{
+  font-weight: bold;
+}
