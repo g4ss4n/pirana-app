@@ -16,6 +16,10 @@ import BatchPir from './components/batchPir/BatchPir';
 import LabeledPsi from './components/labeledPsi/LabeledPsi';
 import Pirana from './components/pirana/Pirana';
 import SingleQuerySP from './components/singleQuerySP/SingleQuerySP';
+import SQLP from './components/SQLP/sqlp';
+import SQLPSN from './components/SQLPSN/sqlpsn';
+import MQLP from './components/MQLP/mqlp';
+import LPSIPIRANA from './components/LPSIPIRANA/lpsipirana';
 
 
 
@@ -41,6 +45,7 @@ function App() {
     "multi-query-large-payloads",
     "lpsi-pirana"
   ];
+  
 
   const handleNext = () => {
     setSelectedItemIndex((prevIndex) => (prevIndex + 1) % items.length);
@@ -83,6 +88,14 @@ function App() {
         return <Pirana />;
       case 'single-query-small-payloads':
         return <SingleQuerySP />; 
+      case 'single-query-large-payloads':
+        return <SQLP />;
+      case 'single-query-large-payloads-small-n':
+        return <SQLPSN />;
+      case 'multi-query-large-payloads':
+        return <MQLP />;
+      case 'lpsi-pirana':
+        return <LPSIPIRANA />;
       // Add cases for other components as needed
       default:
         return null;
