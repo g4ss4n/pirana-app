@@ -29,7 +29,6 @@ const CodeExplanation = ({ codeLines }) => {
         <pre className="language-jsx">
           {codeLines.map((line, index) => (
             <div key={index} className={`code-line ${index === selectedLineIndex ? 'selected' : ''}`} onClick={() => handleLineClick(index)}>
-              
               <code>{line.code}</code>
             </div>
           ))}
