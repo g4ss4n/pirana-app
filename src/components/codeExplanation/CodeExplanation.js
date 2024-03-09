@@ -29,7 +29,7 @@ const CodeExplanation = ({ codeLines }) => {
         <pre className="language-jsx">
           {codeLines.map((line, index) => (
             <div key={index} className={`code-line ${index === selectedLineIndex ? 'selected' : ''}`} onClick={() => handleLineClick(index)}>
-              <span className="line-number">{index + 1}. </span>
+              
               <code>{line.code}</code>
             </div>
           ))}

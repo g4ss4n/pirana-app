@@ -20,8 +20,7 @@ import SQLP from './components/SQLP/sqlp';
 import SQLPSN from './components/SQLPSN/sqlpsn';
 import MQLP from './components/MQLP/mqlp';
 import LPSIPIRANA from './components/LPSIPIRANA/lpsipirana';
-
-
+import MultiQuerySP from './components/multiQuerySP/MultiQuerySP.js'
 
 function App() {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
@@ -97,6 +96,9 @@ function App() {
       case 'lpsi-pirana':
         return <LPSIPIRANA />;
       // Add cases for other components as needed
+      case 'multi-query-small-payloads':
+        return <MultiQuerySP />; 
+      
       default:
         return null;
     }
