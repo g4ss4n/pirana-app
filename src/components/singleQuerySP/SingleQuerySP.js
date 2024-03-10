@@ -116,9 +116,9 @@ The client send qe=[qe0, qe1, qe2, qe3] to server            </text>
         </p>
         <p>
         Parameters for homomorphic encryption are chosen, and keys are generated. S arranges its database
-        into a matrix of N rows and t := n/N columns.<br />
-        Lets assume we have 9 element in th database, the server arranges its database into a matrix with 3 rows and 3 columns: <br />
-                    Element 0 &nbsp;&nbsp;&nbsp;&nbsp; Element 3 &nbsp;&nbsp;&nbsp;&nbsp; Element 6<br />
+        into a matrix of N rows and t := n/N columns.<br /> <br/>
+        Lets assume we have 9 element in th database, the server arranges its database into a matrix with 3 rows and 3 columns: <br /> <br />
+                    Element 0 &nbsp;&nbsp;&nbsp;&nbsp; <strong>Element 3</strong> &nbsp;&nbsp;&nbsp;&nbsp; Element 6<br />
                 Element 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Element 4 &nbsp;&nbsp;&nbsp;&nbsp; Element 7<br />
                     Element 2 &nbsp;&nbsp;&nbsp;&nbsp; Element 5 &nbsp;&nbsp;&nbsp;&nbsp; Element 8<br /><br />
                     N = 3 &nbsp; &nbsp;&nbsp; (number of rows)<br />

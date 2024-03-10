@@ -43,11 +43,9 @@ const SQLP = () => {
       <Body>
       <p><strong>Example: Single-query PIRANA for Large Payloads:</strong></p>
       <p><strong>Given:</strong></p>
-      <ul>
-        <li><strong>N = 2:</strong> Number of elements in the database (simplified for this example).</li>
-        <li>The database elements are encrypted, with each element potentially requiring multiple ciphertexts due to large payload sizes.</li>
-        <li><strong>I = 2:</strong> Number of ciphertexts required to represent the large payload for a single database element, because the payload size exceeds the capacity of a single ciphertext.</li>
-      </ul>
+        <p><strong>N = 2:</strong> Number of elements in the database (simplified for this example).</p>
+        <p>The database elements are encrypted, with each element potentially requiring multiple ciphertexts due to large payload sizes.</p>
+        <p><strong>I = 2:</strong> Number of ciphertexts required to represent the large payload for a single database element, because the payload size exceeds the capacity of a single ciphertext.</p>
 
       <h3>Database Setup</h3>
       <p>Consider a simplified database with 2 elements for clarity:</p>
@@ -55,7 +53,8 @@ const SQLP = () => {
         <li>Element 1</li>
         <li>Element 2</li>
       </ul>
-      <p>Each element's payload is large and split into 2 ciphertexts due to size constraints. For example, the payload for Element 2, which we want to retrieve, is represented by <code>{"Ciphertext_{2,1}"}</code> and <code>{"Ciphertext_{2,2}"}</code>.</p>
+      <p>Each element's payload is large and split into 2 ciphertexts due to size constraints. </p>
+      <p>For example, the payload for Element 2, which we want to retrieve, is represented by <strong>{"Ciphertext_{2,1}"}</strong> and <strong>{"Ciphertext_{2,2}"}</strong>.</p>
 
       <h3>Steps for Retrieving Element 2's Payload</h3>
       
