@@ -1,12 +1,41 @@
 import React, { useState } from 'react';
+import './sqlpsn.css';
+import CodeExplanation from '../codeExplanation/CodeExplanation';
+import Title from '../title/Title';
+import Body from '../body/Body';
 
 const SQLPSN = () => {
   // State to manage the visibility of the comparison section
   const [showComparison, setShowComparison] = useState(false);
 
+  const codeLines = [
+    {
+        code: "1. Payload Splitting",
+        explanation: "Element 2's payload is large and split into two parts: Payload_{2,1} and Payload_{2,2}. These parts are encrypted into two ciphertexts: Ciphertext_{2,1} and Ciphertext_{2,2}."
+    },
+    {
+        code: "2. Client Query",
+        explanation: "The client wishes to retrieve Element 2's full payload but needs to do so without revealing the specific element they are interested in directly. A query is constructed to efficiently request the large payload associated with Element 2."
+    },
+    {
+        code: "3. Server Processing",
+        explanation: "Upon receiving the query, the server identifies that the request pertains to Element 2’s payload. The server prepares the response by selecting the ciphertexts Ciphertext_{2,1} and Ciphertext_{2,2} associated with Element 2's payload."
+    },
+    {
+        code: "4. Efficient Retrieval for Large Payloads",
+        explanation: "Instead of requiring I * (N-1) rotations as might be typically necessary, the server uses an optimized approach to minimize the number of rotations and computations needed to prepare the payload for retrieval. This optimization is particularly effective given the small size of n in the database, allowing for a more efficient retrieval process that conserves computational resources."
+    },
+    {
+        code: "5. Client Receives and Reconstructs Payload",
+        explanation: "The client receives Ciphertext_{2,1} and Ciphertext_{2,2}, decrypts them, and reconstructs Element 2's large payload. This process ensures that the large payload is retrieved efficiently, despite the small number of elements in the database and the large size of the payload."
+    }
+];
+
   return (
+    
     <div>
-      <h2>Single-query for large payloads with small n</h2>
+      <Title>Single-query for large payloads with small n</Title>
+      <Body>
       <h3>Simplified Example for Single-query PIRANA with Large Payloads and Small n</h3>
       <p>Given:</p>
       <ul>
@@ -19,37 +48,9 @@ const SQLPSN = () => {
       <p>Imagine a database with just two elements, each associated with a large payload that requires two ciphertexts to be fully represented. Let's focus on retrieving the payload for one specific element (Element 2) efficiently.</p>
 
       <h4>Steps:</h4>
-      <ol>
-        <li>
-          <strong>Payload Splitting:</strong>
-          <ul>
-            <li>Element 2's payload is large and split into two parts: <code>Payload_{"{2,1}"} and Payload_{"{2,2}"}</code>.</li>
-            <li>These parts are encrypted into two ciphertexts: <code>Ciphertext_{"{2,1}"} and Ciphertext_{"{2,2}"}</code>.</li>
-          </ul>
-        </li>
-        <li>
-          <strong>Client Query:</strong>
-          <p>The client wishes to retrieve Element 2's full payload but needs to do so without revealing the specific element they are interested in directly.</p>
-          <p>A query is constructed to efficiently request the large payload associated with Element 2.</p>
-        </li>
-        <li>
-          <strong>Server Processing:</strong>
-          <p>Upon receiving the query, the server identifies that the request pertains to Element 2’s payload.</p>
-          <p>The server prepares the response by selecting the ciphertexts <code>Ciphertext_{"{2,1}"} and Ciphertext_{"{2,2}"}</code> associated with Element 2's payload.</p>
-        </li>
-        <li>
-          <strong>Efficient Retrieval for Large Payloads:</strong>
-          <p>Instead of requiring I * (N-1) rotations as might be typically necessary, the server uses an optimized approach to minimize the number of rotations and computations needed to prepare the payload for retrieval.</p>
-          <p>This optimization is particularly effective given the small size of n in the database, allowing for a more efficient retrieval process that conserves computational resources.</p>
-        </li>
-        <li>
-          <strong>Client Receives and Reconstructs Payload:</strong>
-          <p>The client receives <code>Ciphertext_{"{2,1}"} and Ciphertext_{"{2,2}"}</code>, decrypts them, and reconstructs Element 2's large payload.</p>
-          <p>This process ensures that the large payload is retrieved efficiently, despite the small number of elements in the database and the large size of the payload.</p>
-        </li>
-      </ol>
+      < CodeExplanation codeLines={codeLines} />
 
-      <button onClick={() => setShowComparison(!showComparison)}>
+      <button className='comparison-button' onClick={() => setShowComparison(!showComparison)}>
         {showComparison ? 'Hide Comparison' : 'Show Comparison'}
       </button>
 
@@ -80,6 +81,7 @@ const SQLPSN = () => {
           </ul>
         </div>
       )}
+      </Body>
     </div>
   );
 };
