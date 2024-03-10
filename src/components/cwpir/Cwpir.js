@@ -25,9 +25,31 @@ const Cwpir = () => {
           CwPIR stands for Constant-weight Private Information Retrieval. It's a cryptographic protocol that allows a user to retrieve an item from a database without revealing which item is being retrieved to the database. In CwPIR, the user's query is encoded using a constant-weight code, ensuring that the database cannot infer anything about the specific item being requested based on the query pattern. This provides a level of privacy for the user while still allowing them to access the desired information from the database.
         </p>
         <h2>Constant Weight Code</h2>
+
         <p>
           A Constant Weight Code is a binary string where the number of bits set to 1 is exactly K.
         </p>
+        <h4>Algorithm - Mapping indices to constant-weight codewords</h4>
+        <p>
+        <strong>Input</strong> i ∈ [n] ,&nbsp;&nbsp; m, k ∈ N with (m choose k) ≥ n
+        </p>
+        <p>
+        <strong>Output</strong> x ∈ CW(m, k)
+        </p>
+        <ol>
+              <li>&nbsp;j := i;&nbsp;&nbsp; l := k;&nbsp;&nbsp; x := 0<sup>m</sup></li>
+              <li>&nbsp;<strong>for</strong> m′:= m − 1, ..., 0 <strong>do</strong></li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>if</strong> j ≥ (m′ choose l) <strong>then</strong></li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x[m′] := 1</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j := j − (m' choose l)</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l := l − 1</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>end if</strong></li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if l = 0 then</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>break</strong></li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>end if</strong></li>
+              <li>&nbsp;<strong>end for</strong></li>
+              <li>&nbsp;return x</li>
+            </ol>
       </Body>
       <Body>
         <div className="intro-content">

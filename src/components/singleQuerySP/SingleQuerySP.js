@@ -14,9 +14,9 @@ const SingleQuerySP = () => {
                 The client calculates that Element 3 is in row 0 and column 1.</text>
         },
         {
-            code: <text>x ∈ CW(m, k)<br />
+            code: <text>x ∈ CW(m, k) ← run Algorithm 1 (Mapping indices to constant-weight codewords) with c ∈ [1, ..., t]            <br />
                 Find the k positions [i<sub>1</sub>, ..., i<sub>k</sub>] in x, where x[i] = 1             </text>, 
-                explanation: <text> encodes the column index c = 2 into a constant- weight codeword x, for example CW(4, 2), => x = 0110.< br />< br />
+                explanation: <text> encodes the column index c = 1 into a constant- weight codeword x, for example CW(4, 2): <br />&rarr; x = 0110.< br />< br />
 Then, we find the k positions in CW codeword that has 1     </text >
         },
 
