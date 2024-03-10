@@ -40,16 +40,20 @@ const operations = {
      return `Encrypted product xe = [${product.join(", ")}]`;
     },
     SIMDRotate: (input1, input2) => {
-      // Ensure input1 is an array
       input1 = Array.isArray(input1) ? input1 : [input1];
-  
+    
       // Ensure input2 is a rotation value
       input2 = parseInt(input2);
-  
+    
       // Perform rotation calculation here based on the input and rotation amount
-      const rotatedVector = input1.slice(input2).concat(input1.slice(0, input2));
+      const rotatedVector = [
+        ...input1.slice(input1.length - input2 % input1.length),
+        ...input1.slice(0, input1.length - input2 % input1.length)
+      ];
+    
       return `Encrypted rotated vector xe_rotated = [${rotatedVector.join(", ")}]`;
     }
+    
   };
   
   export default operations;

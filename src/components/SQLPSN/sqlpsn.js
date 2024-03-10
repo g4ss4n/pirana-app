@@ -56,29 +56,25 @@ const SQLPSN = () => {
 
       {showComparison && (
         <div>
-          <h2>Comparing Examples</h2>
-          <h3>Single Query Large Payloads Example</h3>
-          <p>This example demonstrates how to retrieve a large payload associated with a specific element in a database where the payload size exceeds the capacity of a single ciphertext, requiring multiple ciphertexts to represent the full payload.</p>
-          <ul>
-            <li><strong>Focus:</strong> The emphasis is on handling payloads that are too large for a single ciphertext and must be divided into multiple parts, each encrypted separately.</li>
-            <li><strong>Scenario:</strong> It involves a database with an unspecified number of elements but highlights the process for a single element's large payload.</li>
-            <li><strong>Process:</strong> The steps include splitting the large payload into smaller blocks, encrypting each block into a ciphertext, and then using homomorphic operations to prepare and retrieve these ciphertexts efficiently.</li>
-          </ul>
-
-          <h3>Single Query Large Payloads with Small n Example:</h3>
-          <p>This example specifically addresses the scenario where the database has a small number of elements n and focuses on the efficiency improvements in handling large payloads within such a constrained database size.</p>
-          <ul>
-            <li><strong>Focus:</strong> The optimization for databases with a small number of elements n and large payloads. It introduces a specialized approach to reduce the computational overhead typically associated with large payload retrievals.</li>
-            <li><strong>Scenario:</strong> The database explicitly has a small number of elements (n=2 in the simplified example), and the retrieval process is optimized for this context.</li>
-            <li><strong>Process:</strong> The example still involves splitting the payload into multiple ciphertexts due to its size. However, it emphasizes an optimized retrieval process that minimizes the number of necessary rotations and computations, specifically tailored for situations where n is small.</li>
-          </ul>
-
-          <h3>Key Differences</h3>
-          <ul>
-            <li><strong>Database Size n Context:</strong> The first example is more general regarding database size, while the second explicitly deals with optimizations for a small n.</li>
-            <li><strong>Optimization Techniques:</strong> The second example introduces specific optimizations (e.g., reduced rotations) for efficiency in small n databases, which is not a focal point in the first example.</li>
-            <li><strong>Algorithmic Focus:</strong> The second example references a specific algorithmic adjustment designed to enhance efficiency in small n scenarios, whereas the first example provides a broader view of handling large payloads.</li>
-          </ul>
+          <div>
+  <h2>Comparing Examples</h2>
+  <h3>Single Query Large Payloads Example</h3>
+  <p>This example demonstrates how to retrieve a large payload associated with a specific element in a database where the payload size exceeds the capacity of a single ciphertext, requiring multiple ciphertexts to represent the full payload.</p>
+  <p><strong>Focus:</strong> The emphasis is on handling payloads that are too large for a single ciphertext and must be divided into multiple parts, each encrypted separately.</p>
+  <p><strong>Scenario:</strong> It involves a database with an unspecified number of elements but highlights the process for a single element's large payload.</p>
+  <p><strong>Process:</strong> The steps include splitting the large payload into smaller blocks, encrypting each block into a ciphertext, and then using homomorphic operations to prepare and retrieve these ciphertexts efficiently.</p>
+  <br />
+  <h3>Single Query Large Payloads with Small n Example:</h3>
+  <p>This example specifically addresses the scenario where the database has a small number of elements n and focuses on the efficiency improvements in handling large payloads within such a constrained database size.</p>
+  <p><strong>Focus:</strong> The optimization for databases with a small number of elements n and large payloads. It introduces a specialized approach to reduce the computational overhead typically associated with large payload retrievals.</p>
+  <p><strong>Scenario:</strong> The database explicitly has a small number of elements (n=2 in the simplified example), and the retrieval process is optimized for this context.</p>
+  <p><strong>Process:</strong> The example still involves splitting the payload into multiple ciphertexts due to its size. However, it emphasizes an optimized retrieval process that minimizes the number of necessary rotations and computations, specifically tailored for situations where n is small.</p>
+  <br />
+  <h3>Key Differences</h3>
+  <p><strong>Database Size n Context:</strong> The first example is more general regarding database size, while the second explicitly deals with optimizations for a small n.</p>
+  <p><strong>Optimization Techniques:</strong> The second example introduces specific optimizations (e.g., reduced rotations) for efficiency in small n databases, which is not a focal point in the first example.</p>
+  <p><strong>Algorithmic Focus:</strong> The second example references a specific algorithmic adjustment designed to enhance efficiency in small n scenarios, whereas the first example provides a broader view of handling large payloads.</p>
+</div>
         </div>
       )}
       </Body>
