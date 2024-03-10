@@ -1,6 +1,30 @@
 import React from 'react';
+import CodeExplanation from '../codeExplanation/CodeExplanation';
 
 const MQLP = () => {
+  const codeLines = [
+    {
+        code: "1. Setup",
+        explanation: "Homomorphic encryption parameters are initialized, and keys are generated. The database is encoded using a batch code, which facilitates the efficient retrieval of elements by ensuring that queries can be processed in parallel without revealing the specific elements being accessed."
+    },
+    {
+        code: "2. Query Generation by Client (C)",
+        explanation: "The client generates query ciphertexts for the desired elements (Element 1 and Element 2). This involves creating SIMD ciphertexts where each slot is dedicated to a specific element, enabling the parallel processing of multiple queries."
+    },
+    {
+        code: "3. Answering Query by Server (S)",
+        explanation: "For each bucket, the server calculates a selection vector that identifies the elements being queried. This step is crucial for ensuring that the correct elements are retrieved while maintaining the privacy of the query."
+    },
+    {
+        code: "4. Server Performs SIMD",
+        explanation: "The server then performs SIMD operations to process the query, utilizing the parallelism afforded by the homomorphic encryption scheme to efficiently handle the large payloads associated with each element. Given the large size of the payloads and the optimization goal, the server combines every s = 2 ciphertexts iteratively for I * B iterations, optimizing the retrieval process."
+    },
+    {
+        code: "5. Extraction",
+        explanation: "The client decrypts the response ciphertexts to obtain the payloads for Element 1 and Element 2. This final step highlights the effectiveness of PIRANA in facilitating the secure and efficient retrieval of multiple large payloads in a single query session."
+    }
+];
+
   return (
     <div>
       <h2>Multi-query PIRANA for Large Payloads</h2>
@@ -23,22 +47,7 @@ const MQLP = () => {
       <p>The client wishes to retrieve payloads for Element 1 and Element 2.</p>
 
       <h3>Process:</h3>
-      <ol>
-        <li>
-          <strong>Setup:</strong> Homomorphic encryption parameters are initialized, and keys are generated. The database is encoded using a batch code, which facilitates the efficient retrieval of elements by ensuring that queries can be processed in parallel without revealing the specific elements being accessed.
-        </li>
-        <li>
-          <strong>Query Generation by Client (C):</strong> The client generates query ciphertexts for the desired elements (Element 1 and Element 2). This involves creating SIMD ciphertexts where each slot is dedicated to a specific element, enabling the parallel processing of multiple queries.
-        </li>
-        <li>
-          <strong>Answering Query by Server (S):</strong> For each bucket, the server calculates a selection vector that identifies the elements being queried. This step is crucial for ensuring that the correct elements are retrieved while maintaining the privacy of the query.
-          <p>The server then performs SIMD operations to process the query, utilizing the parallelism afforded by the homomorphic encryption scheme to efficiently handle the large payloads associated with each element.</p>
-          <p>Given the large size of the payloads and the optimization goal, the server combines every <em>s = 2</em> ciphertexts iteratively for <em>I * B</em> iterations, optimizing the retrieval process.</p>
-        </li>
-        <li>
-          <strong>Extraction:</strong> The client decrypts the response ciphertexts to obtain the payloads for Element 1 and Element 2. This final step highlights the effectiveness of PIRANA in facilitating the secure and efficient retrieval of multiple large payloads in a single query session.
-        </li>
-      </ol>
+      <CodeExplanation codeLines={codeLines} />
 
     </div>
   );
