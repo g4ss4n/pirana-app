@@ -1,5 +1,7 @@
 import React from 'react';
 import CodeExplanation from '../codeExplanation/CodeExplanation';
+import Body from '../body/Body';
+import Title from '../title/Title';
 
 const MQLP = () => {
   const codeLines = [
@@ -27,7 +29,8 @@ const MQLP = () => {
 
   return (
     <div>
-      <h2>Multi-query PIRANA for Large Payloads</h2>
+      <Title>Multi-query PIRANA for Large Payloads</Title>
+      <Body>
       <p><strong>Example: Multi-query PIRANA for Large Payloads:</strong></p>
 
       <h3>Context and Parameters:</h3>
@@ -48,7 +51,7 @@ const MQLP = () => {
 
       <h3>Process:</h3>
       <CodeExplanation codeLines={codeLines} />
-
+      </Body>
     </div>
   );
 };

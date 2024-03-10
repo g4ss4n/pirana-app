@@ -1,9 +1,12 @@
 import React from 'react';
+import Title from '../title/Title';
+import Body from '../body/Body';
 
 const LPSIPIRANA = () => {
   return (
     <div>
-      <h2>LPSI-PIRANA</h2>
+      <Title>LPSI-PIRANA</Title>
+      <Body>
       <p>Suppose we have the following parameters:</p>
       <ul>
         <li>Set <em>X = {'{apple, banana, orange}'}</em></li>
@@ -48,6 +51,7 @@ const LPSIPIRANA = () => {
       </ol>
 
       <p>This way, LPSI-PIRANA allows for efficient and private retrieval of elements based on keyword queries while protecting S's database.</p>
+      </Body>
     </div>
   );
 };

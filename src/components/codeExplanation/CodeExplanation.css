@@ -10,11 +10,21 @@
   flex: 1;
   background-color: #282c34; /* Dark background */
   color: #cccccc; /* Text color */
-  height: 350px;
   overflow-y: auto;
   border-radius: 5px;
   font-size: 13px;
   padding: 10px;
+  height: 250px;
+}
+
+.explanation-window {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  height: 250px;
+  overflow-y: auto;
+
 }
 
 .code-line {
@@ -55,14 +65,6 @@
 .nav-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-}
-
-.explanation-window {
-  flex: 1;
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 5px;
-  height: 300px;
 }
 
 .explanation-window h3 {
