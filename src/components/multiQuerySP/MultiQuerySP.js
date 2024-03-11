@@ -73,7 +73,7 @@ const MultiQuerySP = () => {
             code: <text>
                         &nbsp; &nbsp; &nbsp; Find k positions [i<sub>1</sub>, ..., i<sub>k</sub>] in y<sub>j</sub> , where y<sub>j</sub>[i] = 1<br />
                         &nbsp; &nbsp; &nbsp; wej ← SIMDMul(qe<sub>i1</sub>, ..., qe<sub>ik</sub>) <br />
-                        &nbsp; &nbsp; &nbsp; wej ← SIMDPmul(we<sub>j</sub>, d<sub>j</sub>)
+                        &nbsp; &nbsp; &nbsp; wej ← SIMDPmul(we<sub>j</sub>, d<sub>j</sub>)<br/>
                         ve ← SIMDAdd(ue<sub>1</sub>, ..., ue<sub>t</sub>)</text>,
             explanation: <text>The Server runs this Algorithm to answer these L queries in a batch.<br /> It is runs mostly the same as Algorithm (Single-query PIRANA: Answer).<br />
             Here we encode the column indices j to a constant-weight codewords y<sub>j</sub>, then we perform equality operations on the SIMD ciphertexts received from the client and the constant-weight codewords y<sub>j</sub>, the result is t SIMD ciphertexts.<br />

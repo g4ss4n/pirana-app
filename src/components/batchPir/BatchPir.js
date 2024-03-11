@@ -42,7 +42,21 @@ const codeLines2 = [
       <Title>Batch Code in PIRANA</Title>
       <Body>
         <p>
-          In the context of PIRANA, a batch code is a mechanism facilitating the efficient retrieval of multiple elements from a database. It minimizes communication and computation overhead compared to fetching each element individually. Specifically, a batch code (n, M, L, B) -BC encodes a collection of n elements into M codewords distributed among B buckets. The crucial property is that any L of the n elements can be recovered by fetching at most one codeword from each bucket. This structure is fundamental for supporting multi-query Private Information Retrieval (PIR) operations efficiently.
+          In the context of PIRANA, a batch code is a mechanism facilitating the efficient retrieval of multiple elements from a database. 
+          It minimizes communication and computation overhead compared to fetching each element individually. <br/>
+          Specifically, a batch code (n, M, L, B) -BC encodes a collection of n elements into M codewords distributed among B buckets.<br/> 
+          The crucial property is that any L of the n elements can be recovered by fetching at most one codeword from each bucket. <br/>
+          This structure is fundamental for supporting multi-query Private Information Retrieval (PIR) operations efficiently.
+        </p>
+        <p>
+        Angel et al. introduce the notion of probabilistic
+batch code (PBC) that differs from the traditional batch
+codes in that it fails to be complete with probability p,
+in exchange for a smaller M and B. They provide a PBC
+construction based on 3-way cuckoo hashing, which encodes
+n elements into M = 3n codewords distributed among
+B = 1.5L buckets, with a failure probability of p = 2<sup>-40</sup>
+
         </p>
         <p>
         We summarize the operations of a batch code as follows:
@@ -57,6 +71,7 @@ const codeLines2 = [
         <p>
           In PIRANA, batch codes play a vital role in multi-query operations, enabling a client C to retrieve a batch of elements from the server S with minimal additional cost. The process operates as follows:
         </p>
+
         <CodeExplanation codeLines={codeLines} />
         <h2>Example</h2>
         <p>
