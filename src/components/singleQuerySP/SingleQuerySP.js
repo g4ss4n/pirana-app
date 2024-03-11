@@ -16,8 +16,8 @@ const SingleQuerySP = () => {
         {
             code: <text>x ∈ CW(m, k) ← run Algorithm 1 (Mapping indices to constant-weight codewords) with c ∈ [1, ..., t]            <br />
                 Find the k positions [i<sub>1</sub>, ..., i<sub>k</sub>] in x, where x[i] = 1             </text>, 
-                explanation: <text> Encodes the column index c = 2 into a constant- weight codeword x, for example CW(5, 2): <br />&rarr; x = 00011.< br />< br />
-Then, we find the k positions in CW codeword that has 1, which are i<sub>4</sub> and i<sub>5</sub>.</text >
+                explanation: <text> Encodes the column index c = 2 into a constant- weight codeword x, for example CW(3, 1): <br />&rarr; x = 001.< br />< br />
+Then, we find the k positions in CW codeword that has 1, which are i<sub>3</sub>.</text >
         },
 
         {
@@ -33,18 +33,15 @@ Then, we find the k positions in CW codeword that has 1, which are i<sub>4</sub>
                 <ol>
                     <li>SIMD Ciphertext qe<sub>1</sub>: SIMDEnq([0, 0, 0])</li> 
                     <li>SIMD Ciphertext qe<sub>2</sub>: SIMDEnq([0, 0, 0])</li> 
-                    <li>SIMD Ciphertext qe<sub>3</sub>: SIMDEnq([0, 0, 0])</li>  
-                    <li>SIMD Ciphertext qe<sub>4</sub>: SIMDEnq([1, 0, 0])</li>  
-                    <li>SIMD Ciphertext qe<sub>5</sub>: SIMDEnq([1, 0, 0])</li>  
-                     
+                    <li>SIMD Ciphertext qe<sub>3</sub>: SIMDEnq([1, 0, 0])</li>  
                 </ol>
-The client send qe=[qe<sub>1</sub>, qe<sub>2</sub>, qe<sub>3</sub>, q3<sub>4</sub>, qe<sub>5</sub>] to server            </text>
+The client send qe=[qe<sub>1</sub>, qe<sub>2</sub>, qe<sub>3</sub>] to server            </text>
         },
 
     ]
     const codeLines2 = [
         {
-            code: <text>Init [d<sub>1</sub>, ..., d<sub>t</sub>] : each dj is [pl<sub>(j−1)N+1</sub>, ..., pl<sub>jN</sub>] </text>,
+            code: <text>Init [d<sub>1</sub>, ..., d<sub>t</sub>] : each dj is [pl<sub>j</sub>,pl<sub>j+n/N</sub>, ..., pl<sub>j+(n/N)(N-1)</sub>] </text>,
             explanation: <text>Upon receiving the query, the server processes each column of the database matrix.</text>
         },
         {
@@ -103,7 +100,7 @@ The client send qe=[qe<sub>1</sub>, qe<sub>2</sub>, qe<sub>3</sub>, q3<sub>4</su
         <Title>Single-Query Small Payload PIRANA</Title>
         <Body>
         <p>
-        We first consider the case that the payload size is smaller than the slot size(bit-size of plaintext modulus), |pl| ≤ p.
+        We first consider the case that the payload size is smaller than the slot size, |pl| ≤ p.
         </p>
         <p>
         <strong>Intuition.</strong> We arrange the n elements of the database into a matrix of N rows and t := ⌈n/N⌉ columns (for simplicity, we assume N divides n), s.t., the i-th element is in row r := i%N and column c := ⌈i/N⌉.
@@ -124,8 +121,8 @@ The client send qe=[qe<sub>1</sub>, qe<sub>2</sub>, qe<sub>3</sub>, q3<sub>4</su
                 Element 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Element 5 &nbsp;&nbsp;&nbsp;&nbsp; Element 6<br />
                     Element 7 &nbsp;&nbsp;&nbsp;&nbsp; Element 8 &nbsp;&nbsp;&nbsp;&nbsp; Element 9<br /><br />
                     N = 3 &nbsp; &nbsp;&nbsp; (number of rows)<br />
-                    m = 5 &nbsp; &nbsp; (number of slots in the ciphertext)<br />
-                    k = 2 &nbsp; &nbsp; &nbsp; (weight of the constant-weight codeword)<br />
+                    m = 3 &nbsp; &nbsp; (number of slots in the ciphertext)<br />
+                    k = 1 &nbsp; &nbsp; &nbsp; (weight of the constant-weight codeword)<br />
                     n = 9 &nbsp; &nbsp; &nbsp; (total number of elements in the database)<br /><br />
                     Let i<sup>*</sup> be the 2nd element
 
