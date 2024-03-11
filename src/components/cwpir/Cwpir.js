@@ -64,35 +64,31 @@ const Cwpir = () => {
 const Plain = [
   {
       code: "Initialization",
-      explanation: "Encrypt x, resulting in the encrypted codeword Ex."
-  },
-  {
-      code: "Comparison",
-      explanation: "Start from the least significant bit (LSB) of y to the most significant bit (MSB)."
+      explanation: <text>Encrypt x, resulting in the encrypted codeword <br/> <br/> Ex = X4, X3, X2, X1.<br/> y = 1, 0, 0, 1. </text>
   },
   {
       code: "Bit position 1",
-      explanation: "Take the first bit from Ex corresponding to bit position 1 of y: 0."
+      explanation: "Multiply the bits of Ex and Ey: X1 * 1 = X1."
   },
   {
       code: "Bit position 2",
-      explanation: "Take the second bit from Ex corresponding to bit position 2 of y: 1."
+      explanation: "Multiply the bits of Ex and Ey: X2 * 0 = 0."
   },
   {
       code: "Bit position 3",
-      explanation: "Take the third bit from Ex corresponding to bit position 3 of y: 0."
+      explanation: "Multiply the bits of Ex and Ey: X3 * 0 = 0."
   },
   {
       code: "Bit position 4",
-      explanation: "Take the fourth bit from Ex corresponding to bit position 4 of y: 1."
+      explanation: "Multiply the bits of Ex and Ey: X4 * 1 = X4."
   },
   {
       code: "Multiplication",
-      explanation: "Multiply the extracted bits together: 0 * 1 * 0 * 1 = 0."
+      explanation: "Multiply the extracted bits together: X4 * X1 = Ex"
   },
   {
       code: "Result",
-      explanation: "Since the result is 0, it means there's at least one mismatch, so the output is 0 (no match)."
+      explanation: "The the output is 0 in an encypted from (no match)."
   }
 ];
 
@@ -211,7 +207,7 @@ const Arithmetic = [
 
           <h4> x = 1010 (Hamming weight k = 2)</h4>
 
-        <h4> y = 1100 (Hamming weight k = 2)</h4>
+        <h4> y = 1001 (Hamming weight k = 2)</h4>
 
       
     <Tabs value={value} onChange={handleChange} aria-label="Cwpir tabs">
