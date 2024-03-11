@@ -31,34 +31,33 @@ const CuckooHashing = () => {
   const codeLines2 = [
     {
         code: "Initialization",
-        explanation: "We start with three arrays, each containing three slots initialized to `None`. [None, None, None] [None, None, None] [None, None, None]"
+        explanation: <text>We start with three arrays, each containing three slots initialized to `None`.<br/> <br/>Array A: [None, None, None] <br/>Array B: [None, None, None] <br/>Array C: [None, None, None]</text>
     },
     {
         code: "Insertion of 5",
-        explanation: "Inserting 5: - It hashes to index 2 in the first array. [None, None, 5] [None, None, None] [None, None, None]"
+        explanation: <text>Inserting 5: <br/>- It hashes to index 2 in Array A. <br/><br/>Array A: [None, None, 5] <br/>Array B: [None, None, None] <br/>Array C: [None, None, None]</text>
     },
     {
         code: "Insertion of 8",
-        explanation: "Inserting 8: - It hashes to index 2 in the third array. [None, None, 5] [None, None, None] [None, None, 8]"
+        explanation: <text>Inserting 8: <br/>- It hashes to index 2 in Array A, causing a displacement. <br/>- Key 8 displaces key 5, which then hashes to index 1 in Array B. <br/><br/>Array A: [None, None, 8] <br/>Array B: [None, 5, None] <br/>Array C: [None, None, None]</text>
     },
     {
         code: "Insertion of 3",
-        explanation: "Inserting 3: - It hashes to index 0 in the second array. [None, None, 5] [3, None, None] [None, None, 8]"
+        explanation: <text>Inserting 3: <br/>- It hashes to index 0 in Array A. <br/><br/>Array A: [3, None, 8] <br/>Array B: [None, 5, None] <br/>Array C: [None, None, None]</text>
     },
     {
         code: "Insertion of 6",
-        explanation: "Inserting 6: - It hashes to index 0 in the first array, causing a displacement. - 6 displaces 5, which then hashes to index 2 in the second array. - 5 displaces None, which then hashes to index 1 in the third array. [6, None, None] [3, None, 5] [None, 8, None]"
+        explanation: <text>Inserting 6: <br/>- It hashes to index 0 in Array A, causing a displacement. <br/>- Key 6 displaces 3, which then hashes to index 1 in Array B. <br/> - Key 3 displaces key 5 to index 0 in Array C.<br/><br/>Array A: [6, None, 8] <br/>Array B: [None, 3, None] <br/>Array C: [5, None, None]</text>
     },
     {
         code: "Insertion of 2",
-        explanation: "Inserting 2: - It hashes to index 2 in the first array, causing a displacement. - 2 displaces None, which then hashes to index 2 in the third array. [6, None, 2] [3, None, 5] [None, 8, None]"
+        explanation: <text>Inserting 2: <br/>- It hashes to index 2 in Array A, causing a displacement. <br/>- Key 2 displaces key 8, which then hashes to index 2 in Array B. <br/><br/>Array A: [6, None, 2] <br/>Array B: [None, 3, 8] <br/>Array C: [5, None, None]</text>
     },
     {
         code: "Final State",
-        explanation: "[6, None, 2] [3, None, 5] [None, 8, None]"
+        explanation: <text>Array A: [6, None, 2] <br/>Array B: [None, 3, 8] <br/>Array C: [5, None, None]</text>
     }
 ];
-
 
 
   return (
@@ -99,6 +98,10 @@ const CuckooHashing = () => {
 
         <h4>Example</h4>
         <CodeExplanation codeLines={codeLines2} />
+
+        <h4>Please note </h4>
+        <p>If a key is being displaced in all available positions, it indicates that the hash table is unable to find an empty slot to accommodate the key after multiple displacements. This situation is often referred to as a "collision" in hashing.</p>
+        <p>In such cases, hash tables typically employ collision resolution techniques to handle the situation. </p>
       </Body>
     </div>
   );

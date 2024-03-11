@@ -11,17 +11,18 @@ const MQLP = () => {
     },
     {
       code: "Query Generation",
-      explanation: "The client decides to retrieve datasets 1, 2, and 3. Given the batch coding and cuckoo hashing, these datasets are guaranteed to be in different buckets or different rows after bucket splitting, ensuring no overlap. The client generates query ciphertexts tailored to these datasets, using SIMD capabilities to create ciphertexts where each slot targets a specific dataset."
+      explanation: "The client decides to retrieve datasets 1 and 2. Given the batch coding and cuckoo hashing, it's feasible for these datasets to be efficiently organized into different buckets, minimizing retrieval conflicts. The client generates query ciphertexts for these datasets, utilizing SIMD capabilities to ensure each slot precisely targets a dataset."
     },
     {
       code: "Server Processing",
-      explanation: "The server identifies queried datasets using selection vectors and leverages SIMD for efficient query processing. A modified rotate-and-sum technique is applied to handle large payloads, combining every s = N/B ciphertexts, with B=2 non-zero values to efficiently encapsulate all requested datasets."
+      explanation: "Upon receiving the queries, the server uses selection vectors to identify the datasets being requested and employs SIMD for effective processing. The modified rotate-and-sum technique is then applied to the large payloads, strategically combining them into fewer ciphertexts for efficient transmission."
     },
     {
       code: "Extraction",
-      explanation: "The client receives the combined ciphertexts, decrypts them, and successfully retrieves the large payloads for datasets 1, 2, and 3, all within a single query session, showcasing the efficiency and privacy of the multi-query PIRANA protocol."
+      explanation: "The client decrypts the received ciphertexts, successfully extracting the requested large payloads for datasets 1 and 2 within a single query session. This exemplifies the protocol's capability to maintain both efficiency and privacy in multi-query operations."
     }
   ];
+  
 
 const codeLines2 = [
   {
@@ -56,23 +57,25 @@ of one) each time and we could only combine s ciphertexts
 
       <p><strong>Example: Multi-query PIRANA for Large Payloads:</strong></p>
 
-<h3>Simplified Scenario Setup:</h3>
-<p>Imagine a database storing detailed scientific datasets, each requiring several ciphertexts for encryption due to their large size.</p>
+      <h3>Simplified Scenario Setup:</h3>
+<p>Consider a database structured to optimize data retrieval using 2 buckets (B=2). This database stores detailed scientific datasets that require encryption for secure storage and privacy-preserving access.</p>
 
 <h3>Parameters:</h3>
 <ul>
-  <li><em>N=4</em>: Number of slots in a ciphertext for parallel operations.</li>
-  <li><em>B=2</em>: Buckets used to efficiently organize the database, using batch coding.</li>
-  <li><em>L=3</em>: Number of datasets the client wishes to retrieve in a single operation, distributed across B buckets.</li>
+  <li><em>N=4</em>: Total number of slots in a ciphertext, facilitating parallel operations.</li>
+  <li><em>B=2</em>: Number of buckets used to efficiently organize the database.</li>
+  <li><em>L=2</em>: Number of datasets the client wishes to retrieve in a single operation, ideally fitting within the bucket structure without overlap.</li>
 </ul>
 
 <h3>Goal:</h3>
-<p>The client aims to retrieve large payloads for 3 specific datasets in one multi-query operation, without revealing the datasets being requested.</p>
+<p>The aim is to demonstrate how the client can retrieve large payloads for 2 specific datasets in one query operation, leveraging the PIRANA protocol's privacy and efficiency features.</p>
+
 
       <h3>Process:</h3>
       <CodeExplanation codeLines={codeLines} />
-      <h3>Illustration:</h3>
-<p>Query ciphertexts might resemble [Query for Dataset 1, Query for Dataset 2, 0, 0] and [0, 0, Query for Dataset 3, 0], targeting specific datasets. The server's response combines these into [Payload for Dataset 1, Payload for Dataset 2, 0, 0] and [0, 0, Payload for Dataset 3, 0], showcasing the protocol's efficiency and privacy.</p>
+      <h3>Quick Overview:</h3>
+<p>The client sends targeted queries for datasets 1 and 2, using separate buckets to avoid overlap. The server processes these queries with SIMD and selection vectors, combining the datasets' payloads into a single, efficiently encrypted format. The client decrypts this to securely retrieve the requested information. This streamlined interaction showcases the PIRANA protocol's efficiency and privacy in handling multi-query operations within a simple system.</p>
+
       </Body>
     </div>
   );
