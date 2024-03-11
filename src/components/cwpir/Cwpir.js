@@ -6,6 +6,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import './Cwpir.css';
+import CodeExplanation from '../codeExplanation/CodeExplanation';
 
 import img1 from './img1.png';
 import img2 from './img2.png';
@@ -16,6 +17,119 @@ const Cwpir = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const codeLines = [
+    {
+        code: "Initialization",
+        explanation: "Set j = i = 3. Set l = k = 3. Initialize x = [0, 0, 0, 0, 0, 0]."
+    },
+    {
+        code: "Loop Over Codeword Positions",
+        explanation: "Start from m' = 5 to 0."
+    },
+    {
+        code: "Iteration 1 (m' = 5)",
+        explanation: "Check if j ≥ (5 choose 3) = 10. Since j = 3 is not greater than 10, skip."
+    },
+    {
+        code: "Iteration 2 (m' = 4)",
+        explanation: "Check if j ≥ (5 choose 4) = 4. Since j = 3 is not greater than 4, skip."
+    },
+    {
+        code: "Iteration 3 (m' = 3)",
+        explanation: "Check if j ≥ (3 choose 3) = 1. Since j = 3 is greater than 1, set x[3] = 1, and update j = 3 - 1 = 2 and l = 3 - 1 = 2. Updated x: [0, 0, 1, 0, 0, 0]."
+    },
+    {
+        code: "Iteration 4 (m' = 2)",
+        explanation: "Check if j ≥ (2 choose 2) = 1. Since j = 2 is greater than 1, set x[4] = 1, and update j = 2 - 1 = 1 and l = 2 - 1 = 1. Updated x: [0, 0, 1, 1, 0, 0]."
+    },
+    {
+        code: "Iteration 5 (m' = 1)",
+        explanation: "Check if j ≥ (1 choose 1) = 1. Since j = 1 is equal to 1, set x[5] = 1, and update j = 1 - 1 = 0 and l = 1 - 1 = 0. Updated x: [0, 0, 1, 1, 1, 0]."
+    },
+    {
+        code: "Iteration 6 (m' = 0)",
+        explanation: "Since l = 0, break."
+    },
+    {
+        code: "Return",
+        explanation: "The resulting constant-weight codeword [0, 0, 1, 1, 1, 0]."
+    },
+    {
+        code: "Result",
+        explanation: "X = [0, 0, 1, 1, 1, 0]."
+    }
+];
+
+const Plain = [
+  {
+      code: "Initialization",
+      explanation: "Encrypt x, resulting in the encrypted codeword Ex."
+  },
+  {
+      code: "Comparison",
+      explanation: "Start from the least significant bit (LSB) of y to the most significant bit (MSB)."
+  },
+  {
+      code: "Bit position 1",
+      explanation: "Take the first bit from Ex corresponding to bit position 1 of y: 0."
+  },
+  {
+      code: "Bit position 2",
+      explanation: "Take the second bit from Ex corresponding to bit position 2 of y: 1."
+  },
+  {
+      code: "Bit position 3",
+      explanation: "Take the third bit from Ex corresponding to bit position 3 of y: 0."
+  },
+  {
+      code: "Bit position 4",
+      explanation: "Take the fourth bit from Ex corresponding to bit position 4 of y: 1."
+  },
+  {
+      code: "Multiplication",
+      explanation: "Multiply the extracted bits together: 0 * 1 * 0 * 1 = 0."
+  },
+  {
+      code: "Result",
+      explanation: "Since the result is 0, it means there's at least one mismatch, so the output is 0 (no match)."
+  }
+];
+
+const Arithmetic = [
+  {
+      code: "Initialization",
+      explanation: "Encrypt both x and y, resulting in encrypted codewords Ex and Ey."
+  },
+  {
+      code: "Comparison",
+      explanation: "Start from the least significant bit (LSB) of Ex and Ey to the most significant bit (MSB)."
+  },
+  {
+      code: "Bit position 1",
+      explanation: "Multiply the first bits of Ex and Ey: 1 * 1 = 1."
+  },
+  {
+      code: "Bit position 2",
+      explanation: "Multiply the second bits of Ex and Ey: 0 * 1 = 0."
+  },
+  {
+      code: "Bit position 3",
+      explanation: "Multiply the third bits of Ex and Ey: 1 * 0 = 0."
+  },
+  {
+      code: "Bit position 4",
+      explanation: "Multiply the fourth bits of Ex and Ey: 0 * 0 = 0."
+  },
+  {
+      code: "Summation",
+      explanation: "Sum up the results: 1 + 0 + 0 + 0 = 1."
+  },
+  {
+      code: "Result",
+      explanation: "Since c is less than k (2), there's at least one mismatch, so the output is 0 (no match)."
+  }
+];
 
   return (
     <div className="cwpir-container">
@@ -50,6 +164,8 @@ const Cwpir = () => {
               <li>&nbsp;<strong>end for</strong></li>
               <li>&nbsp;return x</li>
             </ol>
+            <h4>Example</h4>
+            <CodeExplanation codeLines={codeLines} />
       </Body>
       <Body>
         <div className="intro-content">
@@ -80,7 +196,6 @@ const Cwpir = () => {
               <li>We take the bits of x corresponding with the bits of y and extract them.</li>
               <li>If there are exactly K bits set to 1, they will give us the result of the comparison in encrypted form.</li>
             </ol>
-            <img src={img2} alt="Plain Comparison" className="tab-image" />
           </TabPanel>
           <TabPanel value={value} index={1}>
             <h2>Arithmetic Comparison</h2>
@@ -89,7 +204,6 @@ const Cwpir = () => {
               <li>We perform the inner product between the bits to get "c" which is something between 0 and K.</li>
               <li>If "c" equals K, they are a match. If it's less than K, they are not a match.</li>
             </ol>
-            <img src={img1} alt="Arithmetic Comparison" className="tab-image" />
           </TabPanel>
         </Box>
           <h3>Example</h3>
@@ -106,38 +220,10 @@ const Cwpir = () => {
 </Tabs>
 <Box>
   <TabPanel value={value} index={0}>
-    <h4>Plain Method:</h4>
-    <ol>
-      <li>We encrypt x, resulting in the encrypted codeword Ex.</li>
-      <li>We compare Ex with y directly, without encryption.</li>
-      
-      <h3>Comparison:</h3>
-        <ol>
-          <li>For y = 1100, we take the corresponding bits from Ex: 10.</li>
-          <li>Multiply the extracted bits together: 1 * 0 = 0.</li>
-          <li>Since the result is 0, it means there's at least one mismatch, so the output is 0 (no match).</li>
-        </ol>
-      
-    </ol>
+    <CodeExplanation codeLines={Plain} />
   </TabPanel>
   <TabPanel value={value} index={1}>
-    <h4>Arithmetic Method:</h4>
-    <ol>
-      <li>We encrypt both x and y, resulting in encrypted codewords Ex and Ey.</li>
-      <li>We perform an inner product operation between Ex and Ey.</li>
-      
-        <h3>Comparison:</h3>
-        <ol>
-          <li>Inner product of Ex (1010) and Ey (1100) results in c = 1.</li>
-          <li>Multiply the first bits of Ex and Ey: 1 * 1 = 1.</li>
-          <li>Multiply the second bits of Ex and Ey: 0 * 1 = 0.</li>
-          <li>Multiply the third bits of Ex and Ey: 1 * 0 = 0.</li>
-          <li>Multiply the fourth bits of Ex and Ey: 0 * 0 = 0.</li>
-          <li>Now, sum up the results: 1 + 0 + 0 + 0 = 1.</li>
-          <li>Since c is less than k (2), there's at least one mismatch, so the output is 0 (no match).</li>
-        </ol>
-      
-    </ol>
+    <CodeExplanation codeLines={Arithmetic} />
   </TabPanel>
 </Box>
 

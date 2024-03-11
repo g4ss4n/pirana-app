@@ -36,6 +36,13 @@ const SQLPSN = () => {
     <div>
       <Title>Single-query for large payloads with small n</Title>
       <Body>
+      <p>For databases with large payloads but a smaller number of elements (n), PIRANA introduces an optimization to reduce the computational load through a strategic balance between rotation operations. This optimization is pivotal in scenarios where the conventional approach would necessitate a prohibitive number of rotations, thus enhancing efficiency and practicality.</p>
+      <p>The core intuition behind this optimization involves pre-computing all possible rotations for each selection vector, eliminating the need for rotations during the inner product computation.</p>
+      <p> Initially, we arrange the payloads just once to line up the numbers correctly. </p>
+      <p>Then, we adjust our selection vectors multiple times to match these rearranged payloads. By multiplying these matched pairs and summing up the results, we quickly get the inner products we need.</p>
+      
+      <p>Essentially, it's a clever setup followed by efficient calculations to get multiple results at once.</p>
+      
       <h3>Simplified Example for Single-query PIRANA with Large Payloads and Small n</h3>
       <p>Given:</p>
       <ul>

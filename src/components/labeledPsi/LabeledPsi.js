@@ -8,25 +8,26 @@ const LabeledPsi = () => {
   const codeLines = [
     {
         code: "1. Setup",
-        explanation: "Server holds a secret key k."
+        explanation: "The server generates a secret key, for example, k = 10, and the client has an input, for example, x = 5."
     },
     {
-        code: "2. Client's Input",
-        explanation: "Client blinds input x to x'."
+        code: "2. Client to Server",
+        explanation: "The client sends its input, x, to the server."
     },
     {
-        code: "3. Blinding",
-        explanation: "Transformation of input x into x' obscures it from the server."
+        code: "3. Server's Computation",
+        explanation: "The server computes a function on the client's input using the secret key. For example, it adds the secret key to the client's input: y = x + k = 5 + 10 = 15."
     },
     {
-        code: "4. Server's Computation",
-        explanation: "Server computes f_k(x') and returns it."
+        code: "4. Server to Client",
+        explanation: "The server sends the result y back to the client."
     },
     {
-        code: "5. Unblinding",
-        explanation: "Client unblinds f_k(x') to obtain f_k(x) without revealing x."
+        code: "5. Answer",
+        explanation: "Now, the client knows the result of the computation y, which is 15, but it doesn't know the secret key k or the server's input. Similarly, the server doesn't know the client's input x, but it can compute the function on the input using its secret key. This ensures privacy and security in the computation."
     }
 ];
+
 
 const codeLines2 = [
   {

@@ -36,11 +36,35 @@ const SQLP = () => {
     }
 ];
 
+const codeLines2 = [
+  {
+      code: "Step 1",
+      explanation: "For each database column, a selection vector is generated to identify relevant payloads."
+  },
+  {
+      code: "Step 2",
+      explanation: "The server multiplies blocks of N payloads by each selection vector for all l·N blocks, repeating for each payload block across columns."
+  },
+  {
+      code: "Step 3",
+      explanation: "The resulting ciphertexts from different columns are added together, yielding l · N ciphertexts."
+  },
+  {
+      code: "Step 4",
+      explanation: "Every N ciphertexts undergo rotation to align their non-empty slots, which are then summed to produce l final ciphertexts, efficiently encoding the large payload."
+  }
+];
+
+
 
   return (
     <div>
       <Title>Single-query PIRANA Algorithm for Large Payloads</Title>
       <Body>
+      <p>Addressing the challenge of efficiently retrieving large payloads, PIRANA extends its protocol to optimize the use of ciphertext slots. When dealing with payloads larger than the slot size, the protocol employs a rotate-and-sum technique to maximize bandwidth efficiency and computational resources.</p>
+      <p>Methodology For payloads as large as l ciphertexts, i.e., |pl| = l · N · p, PIRANA splits each payload into l · N smaller blocks. It computes l · N ciphertexts, where the aggregation of non-empty slots across these ciphertexts constitutes the intended payload.</p>
+      <p>The server (S) then rotates every N ciphertexts to interlace their non-empty slots and sums them up, effectively reducing the output to l ciphertexts. This process significantly compresses the payload transmission without compromising the retrieval accuracy.</p>
+      <CodeExplanation codeLines={codeLines2}/>
       <p><strong>Example: Single-query PIRANA for Large Payloads:</strong></p>
       <p><strong>Given:</strong></p>
         <p><strong>N = 2:</strong> Number of elements in the database (simplified for this example).</p>

@@ -27,18 +27,38 @@ const MQLP = () => {
     }
 ];
 
+const codeLines2 = [
+  {
+      code: "Step 1",
+      explanation: "For each column the server generates a selection vector similar to multi-query small payloads."
+  },
+  {
+      code: "Step 2",
+      explanation: "It then multiplies the blocks of N payloads in each column are multiplied by each selection vector."
+  },
+  {
+      code: "Step 3",
+      explanation: "Subsequently, every s ciphertexts are combined, requiring l ·B iterations and l · N rotations."
+  }
+];
+
   return (
     <div>
       <Title>Multi-query PIRANA for Large Payloads</Title>
       <Body>
+      <h3>Process:</h3>
+      <p>When considering large payloads, where |pl| = l · N · p and B is relatively small, it becomes necessary to efficiently combine multiple ciphertexts into a single one. However, the direct application of the rotate-and-sum technique faces a challenge due to the presence of B non-zero values in ve.</p>
+      <h4>Procedure:</h4>
+      <CodeExplanation codeLines={codeLines2} />
+
       <p><strong>Example: Multi-query PIRANA for Large Payloads:</strong></p>
 
       <h3>Context and Parameters:</h3>
-      <ul>
+      <ol>
         <li>Let's consider a PIRANA setup with <em>N=4</em> slots in a ciphertext, indicating the capacity for parallel operations within a single ciphertext due to SIMD (Single Instruction, Multiple Data) capabilities.</li>
         <li>The database contains <em>n=3</em> elements, distributed across <em>B = 2</em> buckets using a batch code. This distribution helps in organizing the database for efficient retrieval while preserving the privacy of the query.</li>
         <li>Each element's payload is large, requiring <em>I = 2</em> ciphertexts for full representation. The protocol aims to retrieve multiple payloads in a single query session efficiently.</li>
-      </ul>
+      </ol>
 
       <h3>Scenario:</h3>
       <p>The database is structured into 3 buckets due to the batch coding scheme:</p>

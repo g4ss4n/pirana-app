@@ -2,50 +2,86 @@ import React from 'react';
 import Title from '../title/Title';
 import Body from '../body/Body';
 import './CuckooHashing.css';
+import CodeExplanation from '../codeExplanation/CodeExplanation';
 
 const CuckooHashing = () => {
+  const codeLines = [
+    {
+        code: "Hash Functions",
+        explanation: "Three hash functions are used instead of two to generate three different hash values for each key."
+    },
+    {
+        code: "Table Structure",
+        explanation: "The hash table consists of three separate arrays or buckets, each corresponding to one of the three hash functions."
+    },
+    {
+        code: "Insertion",
+        explanation: "When inserting a key, it is hashed using the three hash functions, and its corresponding locations in the three arrays are checked."
+    },
+    {
+        code: "Displacement",
+        explanation: "If all three locations are occupied, one of the existing keys is displaced to make room for the new key. This displaced key is then rehashed using the three hash functions, and the process is repeated recursively until an empty slot is found or until a certain maximum number of displacements is reached, in which case the hash table is resized."
+    },
+    {
+        code: "Lookup and Deletion",
+        explanation: "Lookup and deletion operations are similar to insertion, with the key being hashed using the three hash functions to locate its potential positions in the hash table."
+    }
+  ];
+
+  const codeLines2 = [
+    {
+        code: "Initialization",
+        explanation: "We start with three arrays, each containing three slots initialized to `None`. [None, None, None] [None, None, None] [None, None, None]"
+    },
+    {
+        code: "Insertion of 5",
+        explanation: "Inserting 5: - It hashes to index 2 in the first array. [None, None, 5] [None, None, None] [None, None, None]"
+    },
+    {
+        code: "Insertion of 8",
+        explanation: "Inserting 8: - It hashes to index 2 in the third array. [None, None, 5] [None, None, None] [None, None, 8]"
+    },
+    {
+        code: "Insertion of 3",
+        explanation: "Inserting 3: - It hashes to index 0 in the second array. [None, None, 5] [3, None, None] [None, None, 8]"
+    },
+    {
+        code: "Insertion of 6",
+        explanation: "Inserting 6: - It hashes to index 0 in the first array, causing a displacement. - 6 displaces 5, which then hashes to index 2 in the second array. - 5 displaces None, which then hashes to index 1 in the third array. [6, None, None] [3, None, 5] [None, 8, None]"
+    },
+    {
+        code: "Insertion of 2",
+        explanation: "Inserting 2: - It hashes to index 2 in the first array, causing a displacement. - 2 displaces None, which then hashes to index 2 in the third array. [6, None, 2] [3, None, 5] [None, 8, None]"
+    },
+    {
+        code: "Final State",
+        explanation: "[6, None, 2] [3, None, 5] [None, 8, None]"
+    }
+];
+
+
+
   return (
     <div>
-      <Title>Cuckoo Hashing</Title>
+      <Title>Three Way Cuckoo Hashing</Title>
       <Body>
-        <div className='cuckoo-hashing-description'>
-          <p>
-            Cuckoo hashing is used in cloud computing protocols due to its ability to efficiently handle large-scale distributed systems. Its advantages include fast and constant-time lookups, scalability for large datasets, effective load balancing, and reduced memory overhead. These qualities make cuckoo hashing well-suited for optimizing the performance and reliability of cloud-based applications and services.
-          </p>
-        </div>
-        <div className='cuckoo-hashing-details'>
-          <h2>Properties</h2>
-          <ol>
-            <li>Two hash tables</li>
-            <li>Two hash functions</li>
-            <li>Each hash function indexes into a single table</li>
-          </ol>
-          <h3>Insertion</h3>
-          <ol>
-            <li>Insert to the first table</li>
-            <li>In case of conflict - move the conflicting element to the other table (to its corresponding position)</li>
-            <li>In case of infinite loop - Rehash</li>
-          </ol>
-          <h3>Advantages</h3>
-          <ol>
-            <li>Constant-Time Lookups: Search time remains constant, offering efficient retrieval of elements.</li>
-            <li>Simple Implementation: Its straightforward design facilitates easy understanding and implementation.</li>
-            <li>High Performance: With low load factors, cuckoo hashing demonstrates good performance.</li>
-            <li>Minimal Memory Overhead: Direct storage of elements reduces memory overhead.</li>
-          </ol>
-          <strong>Visualization:</strong>
-          <p>
-            <iframe className='cuckoo-hashing-visualization'
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/OBuGqu2d4v4"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </p>
-        </div>
+        <p>Three-way cuckoo hashing is an extension of cuckoo hashing, a hash table scheme used for resolving collisions.</p>
+        <p>In traditional cuckoo hashing, each key is hashed to two different locations, and if a collision occurs in one of these locations, the key is rehashed and moved to the alternate location.</p>
+        <p>In three-way cuckoo hashing, each key is hashed to three different locations instead of two. This provides an additional level of redundancy and can reduce the likelihood of collisions, increasing the efficiency of the hash table.</p>
+        <CodeExplanation codeLines={codeLines} />
+        <h2>Insertion:</h2>
+
+<p>Let's insert a few keys: 5, 8, 3, 6, and 2.</p>
+
+<p>We'll use simple modulo hashing functions for the sake of simplicity:</p>
+
+<ul>
+  <li>h1(key) = key % 3</li>
+  <li>h2(key) = (key // 3) % 3</li>
+  <li>h3(key) = (key // 9) % 3</li>
+</ul>
+        <h4>Example</h4>
+        <CodeExplanation codeLines={codeLines2} />
       </Body>
     </div>
   );
