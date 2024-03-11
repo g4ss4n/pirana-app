@@ -39,15 +39,59 @@ const codeLines2 = [
   }
 ];
 
+const oprf = [
+  {
+      code: "1. Setup",
+      explanation: "The server generates a secret key, for example, k = 10, and the client has an input, for example, x = 5."
+  },
+  {
+      code: "2. Client to Server",
+      explanation: "The client sends its input, x, to the server."
+  },
+  {
+      code: "3. Server's Computation",
+      explanation: "The server computes a function on the client's input using the secret key. For example, it adds the secret key to the client's input: y = x + k = 5 + 10 = 15."
+  },
+  {
+      code: "4. Server to Client",
+      explanation: "The server sends the result y back to the client."
+  },
+  {
+      code: "5. Answer",
+      explanation: "Now, the client knows the result of the computation y, which is 15, but it doesn't know the secret key k or the server's input. Similarly, the server doesn't know the client's input x, but it can compute the function on the input using its secret key. This ensures privacy and security in the computation."
+  }
+];
+
 
 
   return (
     <div>
-      <Title>LPSI-PIRANA</Title>
+      <Title>Labeled PSI</Title>
       <Body>
+            <h3>Labeled Private Set Intersection (LPSI)</h3>
+            Labeled PSI, or LPSI, is a cryptographic technique facilitating secure computation of the intersection of sets held by two parties without revealing additional information.
+            <br/><br/>
+            <strong>Example:</strong><br/>
+            <p>Alice's Set: A1: apple, A2: banana, A3: orange</p>
+            <p>Bob's Set: B1: banana, B2: strawberry, B3: grape</p>
+            <strong>Protocol:</strong>
+            <ol>
+              <li>Alice and Bob privately label their sets.</li>
+              <li>They exchange encrypted versions of their labeled sets.</li>
+              <li>Using cryptographic techniques, they compute the intersection.</li>
+            </ol>
+            <strong>Result:</strong> The intersection is A2: banana, B1: banana.
+
+            <h3>Oblivious Pseudo-Random Function (OPRF)</h3>
+            OPRF is a cryptographic protocol enabling a client to compute a function on their input using a secret key held by the server, without revealing the input or the key.
+            <br/><br/>
+            <strong>How OPRF Works:</strong>
+            
+            <CodeExplanation codeLines={oprf} />
+            
+      <Title>LPSI-PIRANA</Title>
         <p>LPSI-PIRANA represents an extension of the multi-query PIRANA protocol to support Labeled Private Set Intersection (LPSI), enhancing its capability to handle keyword queries while securing the server's database.</p>
         <p>This extension is facilitated by a combination of Oblivious Pseudo-Random Function (OPRF) and cuckoo hashing. The process comprises several phases:</p>
-      <CodeExplanation codeLines={codeLines} />
       
       <h4>Suppose we have the following parameters:</h4>
       <ol>

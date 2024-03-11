@@ -35,7 +35,6 @@ function App() {
     "simd",
     "cuckoo-hashing",
     "batch-pir",
-    "labeled-psi",
     "pirana",
     "single-query-small-payloads",
     "single-query-large-payloads",

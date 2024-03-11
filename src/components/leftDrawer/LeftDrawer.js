@@ -19,7 +19,6 @@ const LeftDrawer = ({ onItemClick, selectedItemIndex }) => {
     "simd",
     "cuckoo-hashing",
     "batch-pir",
-    "labeled-psi",
     "pirana",
     "single-query-small-payloads",
     "single-query-large-payloads",
