@@ -28,6 +28,8 @@ const HomomorphicEncryption = () => {
           <li><strong>SHE - Somewhat Homomorphic Encryption</strong> - Both addition and multiplication for a limited number of times (limitation).</li>
           <li><strong>FHE - Fully Homomorphic Encryption</strong> - Both addition and multiplication on the ciphertext infinite number of times.</li>
         </ol>
+        <p>In summary, FHE allows both addition and multiplication homomorphically, SHE allows either addition or multiplication, and PHE allows only one type of operation, either addition or multiplication, but with more efficiency compared to SHE.</p>
+        <p>The term <strong>"number of times" </strong> refers to how many times a specific operation (addition or multiplication) can be applied to encrypted data while still preserving the homomorphic properties of the encryption scheme.</p>
         <p><strong>Disadvantage:</strong> Speed and Storage requirements.</p>
         <p><strong>Major issue with Homomorphic encryption:</strong> poor performance and high cost.</p>
       </Body>

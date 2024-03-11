@@ -6,35 +6,28 @@ import CodeExplanation from '../codeExplanation/CodeExplanation';
 
 const SQLP = () => {
   const codeLines = [
-    {
-        code: "1. Client Request",
-        explanation: "The client wants to retrieve the payload for Element 2. In a full PIRANA implementation, the client sends a query that doesn't reveal which element it wants but is constructed to allow the server to perform the necessary computations to return the correct payload."
-    },
-    {
-        code: "2. Split Payload into Small Blocks",
-        explanation: "The payload for Element 2 is too large for a single ciphertext and is therefore split into Ciphertext_{2,1} and Ciphertext_{2,2}. This splitting is part of the database setup and payload encryption process, not the query process itself."
-    },
-    {
-        code: "3. Compute Ciphertexts for Blocks",
-        explanation: "Assuming Element 2's payload is the target, the server identifies the ciphertext blocks that represent this payload."
-    },
-    {
-        code: "4. Selection Vector",
-        explanation: "In a more complex database, a selection vector would be used here to identify which elements' ciphertexts to operate on. For simplicity, since we already know we're retrieving Element 2, we skip directly to using its ciphertexts."
-    },
-    {
-        code: "5. Add Ciphertexts Together",
-        explanation: "This step involves combining ciphertexts that represent different parts of the payload. In many PIR protocols, including PIRANA, this might involve homomorphic operations that aggregate information without decrypting it. However, for large payloads represented by multiple ciphertexts, the 'addition' might be more about organizing the ciphertexts for return rather than performing cryptographic addition. In this case, since our payload is split into Ciphertext_{2,1} and Ciphertext_{2,2}, there's no need for addition in the traditional sense; we prepare both for return to the client."
-    },
-    {
-        code: "6. Rotate and Sum (if applicable)",
-        explanation: "For larger databases or more complex payloads, rotation and summation operations might be used to align and combine data from multiple ciphertexts efficiently. In our simplified example, with a direct retrieval of two specific ciphertexts without needing to hide which element is being accessed, this step might not apply as described. However, in a full PIRANA process, rotations might be used to ensure the correct alignment of data within SIMD slots across ciphertexts."
-    },
-    {
-        code: "7. Server Response",
-        explanation: "The server sends Ciphertext_{2,1} and Ciphertext_{2,2} back to the client, who can then decrypt them to reconstruct Element 2's payload."
-    }
-];
+      {
+          code: "1. Client Request",
+          explanation: "The client issues a query encoded in such a way to indicate interest in the payload for a specific element. This query is constructed to preserve privacy, not revealing directly which element's payload is being requested."
+      },
+      {
+          code: "2. Server Preparation",
+          explanation: "The server has the payloads split into smaller blocks across multiple ciphertexts (Ciphertext_1 and Ciphertext_2). The server prepares to apply the PIRANA protocol to retrieve these ciphertexts without compromising privacy or efficiency."
+      },
+      {
+          code: "3. Rotate and Sum Technique",
+          explanation: "Splitting: Assume each payload block for the element is already encrypted and stored across Ciphertext_1 and Ciphertext_2. \n- Rotation: For larger payloads that span multiple ciphertexts, PIRANA would typically interlace the non-empty slots (data points) from these ciphertexts to align them properly. However, in our basic example, this step is conceptual as we are directly targeting two known ciphertexts."
+    
+      },
+      {
+          code: "4. Server Response",
+          explanation: "The server sends the relevant ciphertexts (Ciphertext_1 and Ciphertext_2) back to the client. This ensures that only the necessary data is retrieved, maintaining privacy and minimizing bandwidth."
+      },
+      {
+          code: "5. Client Decryption",
+          explanation: "The client decrypts Ciphertext_1 and Ciphertext_2 to reconstruct the large payload for the requested element."
+      }
+  ];
 
 const codeLines2 = [
   {
@@ -67,25 +60,18 @@ const codeLines2 = [
       <CodeExplanation codeLines={codeLines2}/>
       <p><strong>Example: Single-query PIRANA for Large Payloads:</strong></p>
       <p><strong>Given:</strong></p>
-        <p><strong>N = 2:</strong> Number of elements in the database (simplified for this example).</p>
-        <p>The database elements are encrypted, with each element potentially requiring multiple ciphertexts due to large payload sizes.</p>
-        <p><strong>I = 2:</strong> Number of ciphertexts required to represent the large payload for a single database element, because the payload size exceeds the capacity of a single ciphertext.</p>
+        <p><strong>N = 4:</strong> Number of slots in a single ciphertext (for a more illustrative example).</p>
+        <p><strong>l = 2:</strong> Number of ciphertexts required to represent the large payload for a single database element, implying the payload is split across 8 slots in total (2 ciphertexts with 4 slots each).</p>
 
       <h3>Database Setup</h3>
-      <p>Consider a simplified database with 2 elements for clarity:</p>
-      <ul>
-        <li>Element 1</li>
-        <li>Element 2</li>
-      </ul>
-      <p>Each element's payload is large and split into 2 ciphertexts due to size constraints. </p>
-      <p>For example, the payload for Element 2, which we want to retrieve, is represented by <strong>{"Ciphertext_{2,1}"}</strong> and <strong>{"Ciphertext_{2,2}"}</strong>.</p>
+      <p>Consider a database where each element's payload is large, necessitating division into multiple ciphertexts for secure storage. For simplicity, we focus on a single element with its payload distributed across two ciphertexts due to size constraints:</p>
+      <p>Payload for Element = Split into <strong>Ciphertext_1</strong> and <strong>Ciphertext_2</strong></p>
 
       <h3>Steps for Retrieving Element 2's Payload</h3>
       
       <CodeExplanation codeLines={codeLines} />
 
-      <p><strong>Conclusion</strong></p>
-      <p>This refined example outlines the process of retrieving a large payload for a single database element within the PIRANA framework, with adjustments for simplicity and clarity. It's important to remember that the actual PIRANA protocol involves more complex interactions, especially around query construction and the use of homomorphic encryption to preserve privacy during the retrieval process.</p>
+     
       </Body>
     </div>
   );

@@ -80,6 +80,23 @@ const CuckooHashing = () => {
   <li>h2(key) = (key // 3) % 3</li>
   <li>h3(key) = (key // 9) % 3</li>
 </ul>
+
+<h3>Relations between the hash functions results and the arrays</h3>
+
+<h4>For Key 5 for example, the hash results are:</h4>
+<ul>
+  <li>h1(5) = 2</li>
+  <li>h2(5) = 1</li>
+  <li>h3(5) = 0</li>
+</ul>
+<h4>These results suggest that key 5 should ideally be inserted into:</h4>
+<ul>
+  <li>Array A at index 2 (h1 result)</li>
+  <li>Array B at index 1 (h2 result)</li>
+  <li>Array C at index 0 (h3 result)</li>
+</ul>
+<p>However, since the hash table slots are initially empty, key 5 can be inserted into any of these locations without displacing any existing keys.</p>
+
         <h4>Example</h4>
         <CodeExplanation codeLines={codeLines2} />
       </Body>

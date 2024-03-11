@@ -39,7 +39,6 @@ function App() {
     "pirana",
     "single-query-small-payloads",
     "single-query-large-payloads",
-    "single-query-large-payloads-small-n",
     "multi-query-small-payloads",
     "multi-query-large-payloads",
     "lpsi-pirana"
