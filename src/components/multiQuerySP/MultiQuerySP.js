@@ -93,7 +93,7 @@ const MultiQuerySP = () => {
 
     return (
         <div>
-            <Title>Milti-Query Small Payload PIRANA</Title>
+            <Title>Multi-Query Small Payload PIRANA</Title>
             <Body>
             <p>
             Recall that in our single-query PIRANA, C sends m SIMD ciphertexts to S; only one slot in each ciphertext is useful and other slots are empty. 
@@ -102,7 +102,10 @@ const MultiQuerySP = () => {
             Thanks to the batch code, we could encode S’s database into a BC-(n, M, L, B) and treat each bucket as a “row”; then, the desired elements are for sure in different rows. 
             </p>
             <p>
-            We use 3-way cuckoo hashing as the batch code, we are able to retrieve up to ⌊N/1.5⌋ elements with only 3× higher computational cost and almost the same communication cost compared to running the single-query PIRANA once (for small payloads with |pl| ≤ p).
+            We use 3-way cuckoo hashing as the batch code to  encodes n elements into M = 3n codewords distributed among B = 1.5L buckets.<br /> 
+            If we set B = N, we could maximize the number queries L = N/1.5 and minimize the bucket size 3n/N. <br /> <br />
+            The number of columns determines both computational and communication costs, and it increases from n/N (in single-query PIRANA) to 3n/N. <br /><br />
+            Therefore, we are able to retrieve up to ⌊N/1.5⌋ elements with only 3× higher computational cost and almost the same communication cost compared to running the single-query PIRANA once (for small payloads with |pl| ≤ p).
             </p>
 
             <p>
