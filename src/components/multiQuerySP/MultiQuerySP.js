@@ -70,7 +70,7 @@ const MultiQuerySP = () => {
             </text>
         },
         {
-            code: <text>&nbsp; &nbsp; &nbsp; yj ∈ CW(m, k) ← run Algorithm 1 with j ∈[t]<br />
+            code: <text>
                         &nbsp; &nbsp; &nbsp; Find k positions [i<sub>1</sub>, ..., i<sub>k</sub>] in y<sub>j</sub> , where y<sub>j</sub>[i] = 1<br />
                         &nbsp; &nbsp; &nbsp; wej ← SIMDMul(qe<sub>i1</sub>, ..., qe<sub>ik</sub>) <br />
                         &nbsp; &nbsp; &nbsp; wej ← SIMDPmul(we<sub>j</sub>, d<sub>j</sub>)
@@ -85,7 +85,7 @@ const MultiQuerySP = () => {
         {
             code: <text>return ve</text>,
             explanation: <text> The server sends ve to the client, then the client decrypts ve and gets [C<sub>1</sub>[i′<sub>1</sub>], ..., C<sub>B</sub>[i′<sub>N</sub>]].<br /> 
-            Then, it runs:<br /> pl<sub>i<sup>*</sup><sub>1</sub></sub> , ..., pl<sub>i<sup>*</sup><sub>L</sub></sub> ← Decode([i′<sub>1</sub>], ..., C<sub>B</sub>[i′<sub>N</sub>]).<br />
+            Then, it runs:<br /> pl<sub>i<sup>*</sup><sub>1</sub></sub> , ..., pl<sub>i<sup>*</sup><sub>L</sub></sub> ← Decode(C<sub>1</sub>[i′<sub>1</sub>], ..., C<sub>B</sub>[i′<sub>N</sub>]).<br />
             which takes N codewords and outputs L payloads</text >
         },
 
@@ -96,7 +96,10 @@ const MultiQuerySP = () => {
             <Title>Multi-Query Small Payload PIRANA</Title>
             <Body>
             <p>
-            Recall that in our single-query PIRANA, C sends m SIMD ciphertexts to S; only one slot in each ciphertext is useful and other slots are empty. 
+            Recall that in our single-query PIRANA, C sends m SIMD ciphertexts to S; only one slot in each ciphertext is useful and other slots are empty. Then, a natural question to ask is that can we use other slots to batch more queries?
+            </p>
+            <p>
+            The answer is no because there may be multiple desired elements reside on the same row, rendering the query invalid
             </p>
             <p>
             Thanks to the batch code, we could encode S’s database into a BC-(n, M, L, B) and treat each bucket as a “row”; then, the desired elements are for sure in different rows. 
@@ -120,7 +123,7 @@ const MultiQuerySP = () => {
             [C<sub>1</sub>, ..., C<sub>B</sub>] ← Encode([pl<sub>1</sub>, ..., pl<sub>n</sub>])
             </p></div>
             <p>
-            where Ci denotes vectors of codewords in the i-th bucket. If B {"<"} N, it splits each bucket into s := N/B small buckets (for simplicity, we assume B divides N). That means the database is in fact encoded as:
+            where C<sub>i</sub> denotes vectors of codewords in the i-th bucket. If B {"<"} N, it splits each bucket into s := N/B small buckets (for simplicity, we assume B divides N). That means the database is in fact encoded as:
             </p>
             <div style={{ textAlign: 'center' }}>
             <p>
