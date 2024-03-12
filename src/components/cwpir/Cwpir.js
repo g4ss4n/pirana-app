@@ -103,19 +103,19 @@ const Arithmetic = [
   },
   {
       code: "Bit position 1",
-      explanation: "Multiply the first bits of Ex and Ey: 1 * 1 = 1."
+      explanation: "Multiply the first bits of Ex and Ey: 0 * 1 = 0."
   },
   {
       code: "Bit position 2",
-      explanation: "Multiply the second bits of Ex and Ey: 0 * 1 = 0."
+      explanation: "Multiply the second bits of Ex and Ey: 1 * 0 = 0."
   },
   {
       code: "Bit position 3",
-      explanation: "Multiply the third bits of Ex and Ey: 1 * 0 = 0."
+      explanation: "Multiply the third bits of Ex and Ey: 0 * 0 = 0."
   },
   {
       code: "Bit position 4",
-      explanation: "Multiply the fourth bits of Ex and Ey: 0 * 0 = 0."
+      explanation: "Multiply the fourth bits of Ex and Ey: 1 * 1 = 1."
   },
   {
       code: "Summation",
