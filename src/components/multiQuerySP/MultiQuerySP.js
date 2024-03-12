@@ -10,7 +10,7 @@ const MultiQuerySP = () => {
             code: <text>
                  [i<sup>'</sup><sub>1</sub>,...,i<sup>'</sup><sub>N</sub>]{"\u2190"}GenSchedule([i<sup>*</sup><sub>1</sub>,...,i<sup>*</sup><sub>L</sub>])
            </text>, 
-                explanation: <text>given L original indices [i<sup>*</sup><sub>1</sub> , ..., i<sup>*</sup><sub>L</sub> ], C first runs GenSchedule of the batch code to generate indices [i′′<sub>1</sub> , ..., i′′<sub>B</sub>] for each of the B buckets.<br />
+                explanation: <text>Given L original indices [i<sup>*</sup><sub>1</sub> , ..., i<sup>*</sup><sub>L</sub> ], C first runs GenSchedule of the batch code to generate indices [i′′<sub>1</sub> , ..., i′′<sub>B</sub>] for each of the B buckets.<br /><br/>
                 If the buckets has been split into N small buckets, the corresponding indices [i′<sub>1</sub> , ..., i′<sub>N</sub>] should be calculated</text>
         },
         {
@@ -23,7 +23,7 @@ const MultiQuerySP = () => {
             code: <text>&nbsp; &nbsp; &nbsp;x<sub>h</sub> ∈ CW(m, k) {"\u2190"} run CW with i<sup>'</sup><sub>h</sub>∈[M/N]<br />
                 Find the k positions [i<sub>1</sub>, ..., i<sub>k</sub>] in x<sub>h</sub>, where x<sub>h</sub>[i] = 1             </text>, 
             explanation: <text>First we compute a constant-weight codeword x<sub>h</sub> for each of the N slots.<br />
-            Use x<sub>h</sub> to determine the value for that slot and find the k positions [i<sub>1</sub>, ..., i<sub>k</sub>] where x<sub>h</sub>[i]=1 </text >
+            <br/>Use x<sub>h</sub> to determine the value for that slot and find the k positions [i<sub>1</sub>, ..., i<sub>k</sub>] where x<sub>h</sub>[i]=1 </text >
 
         },
 
@@ -36,7 +36,7 @@ const MultiQuerySP = () => {
 
             </text>,
             explanation: <text>Iterate over each slot j in the ciphertext:<br />
-            If j is in the set [i<sub>1</sub>, ..., i<sub>k</sub>], set q<sub>j</sub> [h] = 1, else set q<sub>j</sub>[h] = 0, here we can see the enhancement of the algorithm, because now we use more slots to get other queries.</text>
+            If j is in the set [i<sub>1</sub>, ..., i<sub>k</sub>], set q<sub>j</sub> [h] = 1, else set q<sub>j</sub>[h] = 0, here we can see the improvement of the algorithm, because now we use more slots to get other queries.</text>
         },
         {
         code: <text>for j := 1, ..., m do <br />
@@ -73,18 +73,18 @@ const MultiQuerySP = () => {
             code: <text>
                         &nbsp; &nbsp; &nbsp; Find k positions [i<sub>1</sub>, ..., i<sub>k</sub>] in y<sub>j</sub> , where y<sub>j</sub>[i] = 1<br />
                         &nbsp; &nbsp; &nbsp; wej ← SIMDMul(qe<sub>i1</sub>, ..., qe<sub>ik</sub>) <br />
-                        &nbsp; &nbsp; &nbsp; wej ← SIMDPmul(we<sub>j</sub>, d<sub>j</sub>)
-                        ve ← SIMDAdd(ue<sub>1</sub>, ..., ue<sub>t</sub>)</text>,
-            explanation: <text>The Server runs this Algorithm to answer these L queries in a batch.<br /> It is runs mostly the same as Algorithm (Single-query PIRANA: Answer).<br />
-            Here we encode the column indices j to a constant-weight codewords y<sub>j</sub>, then we perform equality operations on the SIMD ciphertexts received from the client and the constant-weight codewords y<sub>j</sub>, the result is t SIMD ciphertexts.<br />
-            We multiplies the j-th column of the database (d<sub>j</sub>) to we<sub>j</sub>.<br />
+                        &nbsp; &nbsp; &nbsp; wej ← SIMDPmul(we<sub>j</sub>, d<sub>j</sub>)<br/>
+                        ve ← SIMDAdd(ue<sub>1</sub>, ..., ue<sub>t</sub>)</text>, 
+            explanation: <text>The Server runs this Algorithm to answer these L queries in a batch. It is runs mostly the same as Algorithm (Single-query PIRANA: Answer).<br />
+            <br/>Here we encode the column indices j to a constant-weight codewords y<sub>j</sub>, then we perform equality operations on the SIMD ciphertexts received from the client and the constant-weight codewords y<sub>j</sub>, the result is t SIMD ciphertexts.<br /><br/>
+            We multiplies the j-th column of the database (d<sub>j</sub>) to we<sub>j</sub>.
             Then, we add the products of all columns together
             </text>
         },
 
         {
             code: <text>return ve</text>,
-            explanation: <text> The server sends ve to the client, then the client decrypts ve and gets [C<sub>1</sub>[i′<sub>1</sub>], ..., C<sub>B</sub>[i′<sub>N</sub>]].<br /> 
+            explanation: <text> The server sends ve to the client, then the client decrypts ve (vector of N codewords, one for each of the N buckets) and gets [C<sub>1</sub>[i′<sub>1</sub>], ..., C<sub>B</sub>[i′<sub>N</sub>]].<br /> <br/>
             Then, it runs:<br /> pl<sub>i<sup>*</sup><sub>1</sub></sub> , ..., pl<sub>i<sup>*</sup><sub>L</sub></sub> ← Decode(C<sub>1</sub>[i′<sub>1</sub>], ..., C<sub>B</sub>[i′<sub>N</sub>]).<br />
             which takes N codewords and outputs L payloads</text >
         },
