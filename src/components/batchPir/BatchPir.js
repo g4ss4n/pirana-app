@@ -25,33 +25,56 @@ const BatchPir = () => {
 const codeLines2 = [
   {
       code: "1. Encoding",
-      explanation: "With this batch code, the 12 elements will be encoded into 24 codewords distributed among 6 buckets. Each bucket contains 4 codewords."
+      explanation: <text>With this batch code, the 12 elements will be encoded into 24 codewords distributed among 6 buckets. Each bucket contains 4 codewords.<br/><br/>
+      [C<sub>1</sub>, ..., C<sub>6</sub>]← Encode([e<sub>1</sub>, …, e<sub>12</sub>])</text>
   },
   {
       code: "2. Querying",
-      explanation: "Client wants to retrieve 3 specific elements, it can issue a single PIR query to each of the 6 buckets, resulting in 6 responses."
+      explanation: <text>Client wants to retrieve 3 specific elements, it can issue a single PIR query to each of the 6 buckets, resulting in 6 responses.<br/><br/>
+      [i<sup>'</sup><sub>1</sub>,...,i<sup>'</sup><sub>6</sub>]{"\u2190"}GenSchedule([i<sup>*</sup><sub>1</sub>, i<sup>*</sup><sub>3</sub>,i<sup>*</sup><sub>7</sub>])</text>
   },
   {
       code: "3. Retrieval",
-      explanation: "Server processes the 6 queries across the encoded data and returns 6 responses, allowing the client to retrieve the requested elements."
+      explanation: <text>Server processes the 6 queries across the encoded data and returns 6 responses (C<sub>1</sub>[i′<sub>1</sub>], ..., C<sub>6</sub>[i′<sub>6</sub>]), 
+        allowing the client to retrieve the requested elements.<br/><br/>
+      pl<sub>i<sup>*</sup><sub>1</sub></sub> , pl<sub>i<sup>*</sup><sub>3</sub></sub>, pl<sub>i<sup>*</sup><sub>7</sub></sub> ← Decode(C<sub>1</sub>[i′<sub>1</sub>], ..., C<sub>6</sub>[i′<sub>6</sub>])<br/><br/>
+      pl<sub>i<sup>*</sup><sub>1</sub></sub> = e<sub>1</sub>,&nbsp; &nbsp; &nbsp; pl<sub>i<sup>*</sup><sub>3</sub></sub> = e<sub>3</sub>,&nbsp; &nbsp; &nbsp; pl<sub>i<sup>*</sup><sub>7</sub></sub> - e<sub>7</sub></text>
+      
   }
 ];
-
+const codeLines3 = [
+  {
+      code: <text>1. [C<sub>1</sub>, ..., C<sub>B</sub>] ← Encode([pl<sub>1</sub>, ..., pl<sub>n</sub>])</text>,
+      explanation: <text>Where C<sub>i</sub> denotes vectors of codewords in the i-th bucket.</text>
+  },
+  {
+      code: <text>2. [i<sup>'</sup><sub>1</sub>,...,i<sup>'</sup><sub>N</sub>]{"\u2190"}GenSchedule([i<sup>*</sup><sub>1</sub>,...,i<sup>*</sup><sub>L</sub>])</text>,
+      explanation: "Which takes a set of L queries and outputs a query for each of the B buckets."
+  },
+  {
+      code: <text>3. pl<sub>i<sup>*</sup><sub>1</sub></sub> , ..., pl<sub>i<sup>*</sup><sub>L</sub></sub> ← Decode(C<sub>1</sub>[i′<sub>1</sub>], ..., C<sub>B</sub>[i′<sub>B</sub>])</text>,
+      explanation: "Which takes B codewords and outputs L payloads."
+  }
+];
   return (
     <div>
       <Title>Batch Code in PIRANA</Title>
       <Body>
         <p>
-          In the context of PIRANA, a batch code is a mechanism facilitating the efficient retrieval of multiple elements from a database. It minimizes communication and computation overhead compared to fetching each element individually. Specifically, a batch code (n, M, L, B) -BC encodes a collection of n elements into M codewords distributed among B buckets. The crucial property is that any L of the n elements can be recovered by fetching at most one codeword from each bucket. This structure is fundamental for supporting multi-query Private Information Retrieval (PIR) operations efficiently.
+          In the context of PIRANA, a batch code is a mechanism facilitating the efficient retrieval of multiple elements from a database. <br/>
+          It minimizes communication and computation overhead compared to fetching each element individually. <br/><br/>
+          Specifically, a batch code (n, M, L, B) -BC encodes a collection of n elements into M codewords distributed among B buckets. <br/>
+          The crucial property is that any L of the n elements can be recovered by fetching at most one codeword from each bucket. <br/>
+          This structure is fundamental for supporting multi-query Private Information Retrieval (PIR) operations efficiently.
+        </p>
+        <p>
+        Angel et al. introduce the notion of probabilistic batch code (PBC) that differs from the traditional batch codes in that it fails to be complete with probability p, in exchange for a smaller M and B.<br/> 
+        They provide a PBC construction based on 3-way cuckoo hashing, which encodes n elements into M = 3n codewords distributed among B = 1.5L buckets, with a failure probability of p = 2<sup>-40</sup>. 
         </p>
         <p>
         We summarize the operations of a batch code as follows:
         </p>
-        <ol>
-                <li>[C<sub>1</sub>, ..., C<sub>B</sub>] ← Encode([pl<sub>1</sub>, ..., pl<sub>n</sub>]):<br/> Where C<sub>i</sub> denotes vectors of codewords in the i-th bucket.</li>
-                <li>[i<sup>'</sup><sub>1</sub>,...,i<sup>'</sup><sub>N</sub>]{"\u2190"}GenSchedule([i<sup>*</sup><sub>1</sub>,...,i<sup>*</sup><sub>L</sub>]):<br/> Which takes a set of L queries and outputs a query for each of the B buckets.</li>
-                <li>pl<sub>i<sup>*</sup><sub>1</sub></sub> , ..., pl<sub>i<sup>*</sup><sub>L</sub></sub> ← Decode(C<sub>1</sub>[i′<sub>1</sub>], ..., C<sub>B</sub>[i′<sub>B</sub>]):<br/> Which takes B codewords and outputs L payloads.</li>
-            </ol>
+        <CodeExplanation codeLines={codeLines3} />
 
         <h2 className='batch-pir-title'>How Batch Codes Work in PIRANA</h2>
         <p>
@@ -72,7 +95,7 @@ const codeLines2 = [
                 <li>B = 6 is the number of buckets into which the codewords will be distributed.</li>
         </ol>
         <p>
-        Let's say we want to retrieve 3 elements from the database in a single query. We can do this efficiently using the batch code:
+        Let's say we want to retrieve 3 elements (e<sub>1</sub>, e<sub>3</sub>, e<sub>7</sub>) from the database. We can do this efficiently using the batch code:
         </p>
         <CodeExplanation codeLines={codeLines2} />
           This mechanism significantly reduces data transmission and computational effort compared to fetching each element separately. Efficiently encoding and distributing database elements across buckets enables PIRANA to support fast and privacy-preserving multi-query operations, ideal for applications requiring retrieval of multiple database elements in a single operation.

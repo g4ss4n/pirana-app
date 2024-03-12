@@ -117,13 +117,15 @@ The client send qe=[qe<sub>1</sub>, qe<sub>2</sub>, qe<sub>3</sub>] to server   
         Parameters for homomorphic encryption are chosen, and keys are generated. S arranges its database
         into a matrix of N rows and t := n/N columns.<br /> <br/>
         Lets assume we have 9 element in th database, the server arranges its database into a matrix with 3 rows and 3 columns: <br /> <br />
-                    Element 1 &nbsp;&nbsp;&nbsp;&nbsp; <strong>Element 2</strong> &nbsp;&nbsp;&nbsp;&nbsp; Element 3<br />
-                Element 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Element 5 &nbsp;&nbsp;&nbsp;&nbsp; Element 6<br />
+                    Element 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Element 2</strong> &nbsp;&nbsp;&nbsp;&nbsp; Element 3<br />
+                    Element 4 &nbsp;&nbsp;&nbsp;&nbsp; Element 5 &nbsp;&nbsp;&nbsp;&nbsp; Element 6<br />
                     Element 7 &nbsp;&nbsp;&nbsp;&nbsp; Element 8 &nbsp;&nbsp;&nbsp;&nbsp; Element 9<br /><br />
+                    n = 9 &nbsp; &nbsp; &nbsp; (total number of elements in the database)<br />
                     N = 3 &nbsp; &nbsp;&nbsp; (number of rows)<br />
+                    t = 3 &nbsp; &nbsp;&nbsp; (number of columns)<br /><br />
                     m = 3 &nbsp; &nbsp; (number of slots in the ciphertext)<br />
                     k = 1 &nbsp; &nbsp; &nbsp; (weight of the constant-weight codeword)<br />
-                    n = 9 &nbsp; &nbsp; &nbsp; (total number of elements in the database)<br /><br />
+                    <br />
                     Let i<sup>*</sup> be the 2nd element
 
                 
