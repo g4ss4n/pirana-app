@@ -5,39 +5,37 @@ import CodeExplanation from '../codeExplanation/CodeExplanation';
 
 const LPSIPIRANA = () => {
 
-  const codeLines = [
+  const codeLines2 = [
     {
-        code: "1. Setup Phase",
-        explanation: "For instance, during the setup phase, the server computes pairs (x'_i, x''_i) for each element x_i in its database and organizes them into buckets using cuckoo hashing."
+        code: "1. Server assigns elements to buckets",
+        explanation: <text>The server has two buckets: <br/> Bucket 1: [apple, orange] <br/> Bucket 2: [banana]<br/> <br/> It assigns elements to these buckets using a hashing method, like cuckoo hashing, and computes masked payloads for each element.</text>
     },
     {
-        code: "2. Query Phase",
-        explanation: "During the query phase, for each query keyword y_i, the client obtains pairs (y'_i, y''_i) through OPRF protocol and generates query ciphertexts to send to the server."
+      code: "2. The Client and Server run OPRF for each element",
+      explanation: <text>1. The server and client run OPRF to generate special values without revealing 'apple'. <br/><br/> 2. The server and client run OPRF to generate special values without revealing 'banana'. <br/><br/>3. The server and client run OPRF to generate special values without revealing 'orange'.</text>
+  },
+    {
+        code: "3. Client sends queries for each element in its set",
+        explanation: <text>The client wants to find which elements from its set [apple, banana, orange] are also in the server's database.<br/><br/> The Client sends 3 queries <br/><br/> 1. For 'apple':<br/> The client encrypts its query for 'apple' and sends it to the server. <br/><br/><br/> 2. For 'banana': <br/> The client encrypts its query for 'banana' and sends it to the server. <br/><br/> 3. For 'orange': <br/> The client encrypts its query for 'orange' and sends it to the server.</text>
     },
     {
-        code: "3. Answer and Extraction",
-        explanation: "In the answer and extraction phase, the server processes the queries and returns results to the client, who unblinds the responses using y''_i."
+        code: "4. The server receives the encrypted queries",
+        explanation: <text>The server receives the encrypted queries.</text>
+    },
+    {
+      code: "5. The server figures out which elements match its database",
+      explanation: <text>The server figures out which elements match its database. <br/><br/> It identifies that 'apple' is in Bucket 1, 'orange' is in Bucket 1, and 'banana' is in Bucket 2. <br/><br/> It sends back the matching results to the client.</text>
+  },
+  {
+    code: "6. The server sends back the matching results to the client",
+    explanation: <text>The server sends: <br/><br/> 'apple' is in Bucket 1<br/>'orange' is in Bucket 1<br/>'banana' is in Bucket 2.</text>
+  },
+    {
+        code: "7. The client decrypts the results",
+        explanation: <text>The client decrypts the results using the special values it got earlier from the OPRF. <br/><br/> It gets the actual elements that match its queries without revealing them during the process. <br/><br/> For 'apple', it sees it matches with Bucket 1. <br/> For 'banana', it sees it matches with Bucket 2. <br/> For 'orange', it sees it matches with Bucket 1.</text>
     }
-];
+  ];
 
-const codeLines2 = [
-  {
-      code: "1. Setup",
-      explanation: "For example, the server computes masked payloads for each element in the buckets using a PRF and assigns them to buckets using cuckoo hashing."
-  },
-  {
-      code: "2. Query",
-      explanation: "During the query phase, for each element in the query (e.g., 'apple' and 'banana'), the server and client run OPRF to ensure the client gets (y', y'') without learning the key. The client generates query ciphertexts based on the given keywords and sends them to the server."
-  },
-  {
-      code: "3. Answer",
-      explanation: "In the answer phase, the server processes the query ciphertexts, retrieves the results associated with the query, and returns them to the client."
-  },
-  {
-      code: "4. Extract",
-      explanation: "Finally, the client decrypts the results and unmasks them using the y'' values obtained from the OPRF operation. For instance, using the y'' values obtained from the OPRF operation, the client unmasks the results, obtaining the original payloads for 'apple' and 'banana'."
-  }
-];
 
 const oprf = [
   {
